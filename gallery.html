@@ -21,7 +21,7 @@
 
     nav a {
       color: white;
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
@@ -45,36 +45,58 @@
     .gallery img {
       width: 100%;
       border-radius: 15px;
-      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
     }
 
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      padding-top: 60px;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
     }
 
     .modal img {
-      display: block;
-      margin: auto;
       max-width: 80%;
       border-radius: 10px;
     }
 
-    .modal:target {
-      display: block;
+    .close, .prev, .next {
+      position: absolute;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+    }
+
+    .close {
+      top: 20px;
+      right: 30px;
+    }
+
+    .prev {
+      top: 50%;
+      left: 30px;
+      transform: translateY(-50%);
+    }
+
+    .next {
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
     }
 
   </style>
@@ -85,55 +107,102 @@
 <header>
   <h1>Expressive English Academy</h1>
 
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="about.html">Nosotros</a>
-  <a href="courses.html">Cursos</a>
-  <a href="gallery.html">Galería</a>
-  <a href="donate.html">Apoya</a>
-</nav>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="about.html">Nosotros</a>
+    <a href="courses.html">Cursos</a>
+    <a href="gallery.html">Galería</a>
+    <a href="donate.html">❤️ Apoya</a>
+  </nav>
 
-  <img src="foto8.jpg.jpg" width="80">
+  <img src="fotov6.jpg.jpg" width="80">
 </header>
 
 <div class="title">
   <h2>Nuestros estudiantes practicando con hablantes nativos</h2>
-  <p>
-    Experiencias reales que fortalecen la confianza, la pronunciación y la fluidez en inglés.
-  </p>
+  <p>Experiencias reales que fortalecen la confianza y fluidez.</p>
 </div>
 
 <div class="gallery">
-
-  <!-- ANTERIORES -->
-  <a href="#img1"><img src="foto1.jpg.jpeg"></a>
-  <a href="#img2"><img src="foto2.jpg.jpeg"></a>
-  <a href="#img3"><img src="foto3.jpg.jpeg"></a>
-  <a href="#img4"><img src="foto4.jpg.jpeg"></a>
-
-  <!-- NUEVAS -->
-  <a href="#img5"><img src="foto10.jpg.png"></a>
-  <a href="#img6"><img src="foto11.jpg.png"></a>
-  <a href="#img7"><img src="foto12.jpg.png"></a>
-  <a href="#img8"><img src="foto13.jpg.jpg"></a>
-  <a href="#img9"><img src="foto14.jpg.jpg"></a>
-  <a href="#img10"><img src="foto15.jpg.jpg"></a>
-
+  <img src="foto1.jpg.jpeg" onclick="openModal(0)">
+  <img src="foto2.jpg.jpeg" onclick="openModal(1)">
+  <img src="foto3.jpg.jpeg" onclick="openModal(2)">
+  <img src="foto4.jpg.jpeg" onclick="openModal(3)">
+  <img src="foto10.jpg.png" onclick="openModal(4)">
+  <img src="foto11.jpg.png" onclick="openModal(5)">
+  <img src="foto12.jpg.png" onclick="openModal(6)">
+  <img src="foto13.jpg.jpg" onclick="openModal(7)">
+  <img src="foto14.jpg.jpg" onclick="openModal(8)">
+  <img src="foto15.jpg.jpg" onclick="openModal(9)">
 </div>
 
-<!-- MODALES -->
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <span class="close" onclick="closeModal()">✖</span>
+  <span class="prev" onclick="changeSlide(-1)">❮</span>
+  <img id="modalImg">
+  <span class="next" onclick="changeSlide(1)">❯</span>
+</div>
 
-<div id="img1" class="modal"><a href="#"><img src="foto1.jpg.jpeg"></a></div>
-<div id="img2" class="modal"><a href="#"><img src="foto2.jpg.jpeg"></a></div>
-<div id="img3" class="modal"><a href="#"><img src="foto3.jpg.jpeg"></a></div>
-<div id="img4" class="modal"><a href="#"><img src="foto4.jpg.jpeg"></a></div>
+<script>
+  let images = [
+    "foto1.jpg.jpeg",
+    "foto2.jpg.jpeg",
+    "foto3.jpg.jpeg",
+    "foto4.jpg.jpeg",
+    "foto10.jpg.png",
+    "foto11.jpg.png",
+    "foto12.jpg.png",
+    "foto13.jpg.jpg",
+    "foto14.jpg.jpg",
+    "foto15.jpg.jpg"
+  ];
 
-<div id="img5" class="modal"><a href="#"><img src="foto10.jpg.png"></a></div>
-<div id="img6" class="modal"><a href="#"><img src="foto11.jpg.png"></a></div>
-<div id="img7" class="modal"><a href="#"><img src="foto12.jpg.png"></a></div>
-<div id="img8" class="modal"><a href="#"><img src="foto13.jpg.jpg"></a></div>
-<div id="img9" class="modal"><a href="#"><img src="foto14.jpg.jpg"></a></div>
-<div id="img10" class="modal"><a href="#"><img src="foto15.jpg.jpg"></a></div>
+  let currentIndex = 0;
+
+  function openModal(index) {
+    currentIndex = index;
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modalImg").src = images[currentIndex];
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  function changeSlide(direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+      currentIndex = images.length - 1;
+    }
+
+    if (currentIndex >= images.length) {
+      currentIndex = 0;
+    }
+
+    document.getElementById("modalImg").src = images[currentIndex];
+  }
+</script>
+
+<!-- BOTÓN FLOTANTE -->
+<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
+   target="_blank" 
+   style="
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   background-color: #25D366;
+   color: white;
+   padding: 15px 20px;
+   border-radius: 50px;
+   text-decoration: none;
+   font-weight: bold;
+   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+   z-index: 1000;
+   ">
+   💬 WhatsApp
+</a>
 
 </body>
 </html>
