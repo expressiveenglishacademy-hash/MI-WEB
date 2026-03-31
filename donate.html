@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Apoya un Estudiante - Expressive English Academy</title>
+  <title>Apoya - Expressive English Academy</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: white;
       background-color: #0a1f44;
+      color: white;
     }
 
     /* HEADER */
@@ -52,12 +52,12 @@
       font-size: 32px;
     }
 
-    /* SECCIONES */
-    section {
-      padding: 50px 20px;
-      text-align: center;
+    /* CONTENIDO */
+    .container {
       max-width: 900px;
       margin: auto;
+      padding: 40px 20px;
+      text-align: center;
     }
 
     .highlight {
@@ -68,9 +68,9 @@
     /* CARDS */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 20px;
+      margin-top: 20px;
     }
 
     .card {
@@ -79,7 +79,7 @@
       border-radius: 15px;
     }
 
-    /* BOTON */
+    /* BOTÓN */
     .btn {
       display: inline-block;
       margin-top: 20px;
@@ -109,10 +109,10 @@
     <a href="about.html">Nosotros</a>
     <a href="courses.html">Cursos</a>
     <a href="gallery.html">Galería</a>
-    <a href="donate.html">Apoya</a>
+    <a href="donate.html">❤️ Apoya</a>
   </nav>
 
-  <img src="fotov6.jpg.jpg" width="80">
+  <img src="foto8.jpg" width="80" style="border-radius:10px;">
 </header>
 
 <!-- HERO -->
@@ -120,64 +120,70 @@
   <div class="overlay">
     <h2>Cambia una vida a través del inglés</h2>
     <p>
-      En Nicaragua, muchos niños tienen el talento, pero no las oportunidades.
-      Tú puedes ser la diferencia.
+      Muchos niños en Nicaragua tienen sueños, pero no siempre las oportunidades.  
+      Tú puedes ser la razón por la que un estudiante logre un mejor futuro.
     </p>
   </div>
 </div>
 
-<!-- MENSAJE -->
-<section>
-  <h2>¿Por qué apoyar?</h2>
+<!-- CONTENIDO -->
+<div class="container">
+
+  <h2>¿Por qué tu apoyo importa?</h2>
 
   <p>
-    En Expressive English Academy trabajamos con niños y jóvenes de comunidades 
-    con recursos limitados, brindándoles acceso a educación en inglés, una herramienta 
-    clave para cambiar su futuro.
+    En Expressive English Academy trabajamos con estudiantes de comunidades con recursos limitados, 
+    brindándoles acceso a educación en inglés, una herramienta clave para cambiar su realidad.
   </p>
 
   <p>
-    Aprender inglés puede significar <span class="highlight">mejores ingresos, acceso a empleos internacionales 
-    y nuevas oportunidades</span> que impactan no solo al estudiante, sino a toda su familia.
+    Aprender inglés puede significar <span class="highlight">mejores ingresos, acceso a empleos 
+    internacionales y oportunidades reales</span> que impactan directamente a sus familias.
   </p>
-</section>
-
-<!-- IMPACTO -->
-<section>
-  <h2>Tu ayuda hace posible:</h2>
 
   <div class="cards">
-    <div class="card">
-      📚 Acceso a educación de calidad
-    </div>
-
-    <div class="card">
-      🌍 Interacción con hablantes nativos
-    </div>
-
-    <div class="card">
-      💼 Mejores oportunidades laborales
-    </div>
-
-    <div class="card">
-      ❤️ Apoyo a familias nicaragüenses
-    </div>
+    <div class="card">📚 Educación de calidad</div>
+    <div class="card">🌍 Práctica con hablantes nativos</div>
+    <div class="card">💼 Oportunidades laborales</div>
+    <div class="card">❤️ Apoyo a familias</div>
   </div>
-</section>
 
-<!-- CTA -->
-<section>
-  <h2>Apadrina o dona hoy</h2>
+  <h2 style="margin-top:40px;">¿Cómo puedes ayudar?</h2>
 
   <p>
-    Puedes ayudar cubriendo el costo de clases para un estudiante o realizando 
-    una donación voluntaria. Cada aporte cuenta.
+    Puedes apoyar de diferentes maneras:
+  </p>
+
+  <p>
+    🎓 Becando a un estudiante<br>
+    💰 Donación voluntaria<br>
+    🤝 Apoyo continuo al programa
   </p>
 
   <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20cómo%20donar%20o%20becar%20a%20un%20estudiante" target="_blank" class="btn">
     Quiero ayudar
   </a>
-</section>
+
+</div>
+
+<!-- BOTÓN FLOTANTE -->
+<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
+   target="_blank" 
+   style="
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   background-color: #25D366;
+   color: white;
+   padding: 15px 20px;
+   border-radius: 50px;
+   text-decoration: none;
+   font-weight: bold;
+   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+   z-index: 1000;
+   ">
+   💬 WhatsApp
+</a>
 
 </body>
 </html>
