@@ -1,27 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Galería</title>
+  <title>Galería - Expressive English Academy</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a1f44;
+      color: white;
+    }
+
+    /* HEADER */
+    header {
+      background: #081633;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #00c3ff;
+    }
+
+    /* TITULO */
+    .title {
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    .title h2 {
+      margin-bottom: 10px;
+    }
+
+    .title p {
+      color: #ccc;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* GALERIA */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal img {
+      display: block;
+      margin: auto;
+      max-width: 80%;
+      border-radius: 10px;
+    }
+
+    .modal:target {
+      display: block;
+    }
+
+  </style>
 </head>
-<body style="font-family: Arial; background-color:#0a1f44; color:white; text-align:center;">
 
-  <h1>Galería</h1>
+<body>
 
-  <hr>
+<!-- HEADER -->
+<header>
+  <h1>Expressive English Academy</h1>
 
-  <a href="index.html">Inicio</a> |
-  <a href="about.html">Acerca de Nosotros</a> |
-  <a href="courses.html">Cursos</a> |
-  <a href="gallery.html">Galería</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="about.html">Nosotros</a>
+    <a href="courses.html">Cursos</a>
+    <a href="gallery.html">Galería</a>
+  </nav>
 
-  <hr>
+  <img src="fotov6.jpg.jpg" width="80">
+</header>
 
-  <h2>Nuestras Clases</h2>
+<!-- TITULO -->
+<div class="title">
+  <h2>Nuestros estudiantes practicando con hablantes nativos</h2>
+  <p>
+    En Expressive English Academy creemos en el aprendizaje real. 
+    Nuestros estudiantes tienen la oportunidad de interactuar con personas nativas del idioma, 
+    fortaleciendo su confianza, pronunciación y fluidez en situaciones reales.
+  </p>
+</div>
 
-  <img src="foto1.jpg.jpeg" width="250" style="margin:10px; border-radius:10px;">
-  <img src="foto2.jpg.jpeg" width="250" style="margin:10px; border-radius:10px;">
-  <img src="foto3.jpg.jpeg" width="250" style="margin:10px; border-radius:10px;">
-  <img src="foto4.jpg.jpeg" width="250" style="margin:10px; border-radius:10px;">
+<!-- GALERIA -->
+<div class="gallery">
+
+  <a href="#img1">
+    <img src="foto1.jpg.jpeg">
+  </a>
+
+  <a href="#img2">
+    <img src="foto2.jpg.jpeg">
+  </a>
+
+  <a href="#img3">
+    <img src="foto3.jpg.jpeg">
+  </a>
+
+  <a href="#img4">
+    <img src="foto4.jpg.jpeg">
+  </a>
+
+</div>
+
+<!-- MODALES -->
+<div id="img1" class="modal">
+  <a href="#"><img src="foto1.jpg.jpeg"></a>
+</div>
+
+<div id="img2" class="modal">
+  <a href="#"><img src="foto2.jpg.jpeg"></a>
+</div>
+
+<div id="img3" class="modal">
+  <a href="#"><img src="foto3.jpg.jpeg"></a>
+</div>
+
+<div id="img4" class="modal">
+  <a href="#"><img src="foto4.jpg.jpeg"></a>
+</div>
 
 </body>
 </html>
