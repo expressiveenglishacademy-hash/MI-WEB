@@ -1,120 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Expressive English Academy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-    }
-
-    /* Barra superior */
-    .header {
-      background: #1877f2;
-      color: white;
-      padding: 15px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    /* Contenedor principal */
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    /* Caja estilo red social */
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* Botones */
-    button {
-      background: #1877f2;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    /* Resultado */
-    .result {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    .valid {
-      color: green;
-    }
-
-    .invalid {
-      color: red;
-    }
-  </style>
+  <title>Acerca de Nosotros</title>
 </head>
+<body style="font-family: Arial; background-color:#0a1f44; color:white;">
 
-<body>
+  <h1>Expressive English Academy</h1>
 
-  <div class="header">
-    📘 Expressive English Academy
-  </div>
+  <hr>
 
-  <div class="container">
+  <a href="index.html">Inicio</a> |
+  <a href="about.html">Acerca de Nosotros</a> |
+  <a href="courses.html">Cursos</a> |
+  <a href="gallery.html">Galería</a>
 
-    <!-- Publicación tipo red social -->
-    <div class="card">
-      <h3>Bienvenidos a nuestra academia</h3>
-      <p>Aprende inglés de forma moderna, interactiva y efectiva.</p>
-    </div>
+  <hr>
 
-    <!-- Sección de verificación -->
-    <div class="card">
-      <h3>🔎 Verificar Certificado</h3>
-      <p>Ingresa el código del certificado:</p>
+  <h2>¿Quiénes somos?</h2>
+  <p>Somos una academia enfocada en enseñar inglés de forma práctica, dinámica y comunicativa.</p>
 
-      <input type="text" id="codigo" placeholder="Ej: CERT-12345">
-      <button onclick="verificar()">Verificar</button>
+  <h2>Misión</h2>
+  <p>Formar estudiantes capaces de comunicarse en inglés con confianza.</p>
 
-      <div id="resultado" class="result"></div>
-    </div>
-
-  </div>
-
-  <script>
-    // Lista de certificados válidos (puedes agregar más)
-    const certificadosValidos = ["CERT-12345", "CERT-ABC", "CERT-2024"];
-
-    function verificar() {
-      const codigo = document.getElementById("codigo").value.trim();
-      const resultado = document.getElementById("resultado");
-
-      if (certificadosValidos.includes(codigo)) {
-        resultado.textContent = "✅ Certificado válido";
-        resultado.className = "result valid";
-      } else {
-        resultado.textContent = "❌ Certificado no encontrado";
-        resultado.className = "result invalid";
-      }
-    }
-  </script>
+  <h2>Visión</h2>
+  <p>Ser una academia líder en enseñanza del inglés.</p>
 
 </body>
 </html>
