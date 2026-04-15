@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expressive English Academy | Cursos</title>
+  <meta name="description" content="Conoce los cursos de ingl&eacute;s para ni&ntilde;os, adolescentes, adultos y preparaci&oacute;n laboral de Expressive English Academy.">
   <meta name="theme-color" content="#081220">
-  <meta name="description" content="Conoce los cursos de ingles para ninos, adolescentes, adultos y preparacion laboral de Expressive English Academy.">
+  <title>Expressive English Academy | Cursos</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
     :root {
+      --bg: #061221;
+      --panel: rgba(11, 26, 48, 0.88);
       --line: rgba(255, 255, 255, 0.12);
+      --line-soft: rgba(255, 255, 255, 0.08);
       --text: #f7fbff;
       --muted: #bfd0e6;
       --accent: #74e6ff;
-      --accent-2: #ffd37b;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --warm: #f8c76d;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-pill: 999px;
-      --max: 1180px;
+      --max-width: 1180px;
     }
 
     * {
@@ -37,9 +40,9 @@
       font-family: "Manrope", sans-serif;
       line-height: 1.6;
       background:
-        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
-        linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
+        radial-gradient(circle at top left, rgba(116, 230, 255, 0.13), transparent 28%),
+        radial-gradient(circle at top right, rgba(248, 199, 109, 0.14), transparent 22%),
+        linear-gradient(180deg, #081220 0%, #07101b 55%, #050b14 100%);
     }
 
     img {
@@ -57,16 +60,16 @@
     }
 
     .container {
-      width: min(var(--max), calc(100% - 2rem));
+      width: min(var(--max-width), calc(100% - 2rem));
       margin: 0 auto;
     }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 80;
-      background: rgba(5, 10, 18, 0.8);
+      z-index: 60;
       backdrop-filter: blur(16px);
+      background: rgba(5, 11, 20, 0.78);
       border-bottom: 1px solid var(--line);
     }
 
@@ -76,7 +79,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 14px 0;
+      padding: 15px 0;
     }
 
     .brand {
@@ -87,19 +90,20 @@
     }
 
     .brand-logo {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.06);
     }
 
     .brand-copy strong {
       display: block;
       font-family: "Sora", sans-serif;
       font-size: 1rem;
-      line-height: 1.2;
+      line-height: 1.3;
     }
 
     .brand-copy span {
@@ -111,11 +115,11 @@
     .nav-toggle {
       display: none;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
-      padding: 10px 16px;
       border-radius: var(--radius-pill);
-      font-weight: 800;
+      padding: 10px 16px;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -135,22 +139,24 @@
     .main-nav a:hover,
     .main-nav a.active {
       color: var(--text);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .main-nav .nav-cta {
       color: #07111d;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      font-weight: 900;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--warm));
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 90px 0 72px;
-      background:
-        linear-gradient(125deg, rgba(5, 11, 20, 0.82), rgba(5, 11, 20, 0.46)),
-        url("foto11.jpg.png") center/cover no-repeat;
+      padding: 92px 0 72px;
+      background-image:
+        linear-gradient(125deg, rgba(5, 11, 20, 0.9), rgba(5, 11, 20, 0.58)),
+        var(--hero-image);
+      background-size: cover;
+      background-position: center;
     }
 
     .hero::after {
@@ -158,39 +164,20 @@
       position: absolute;
       right: -90px;
       bottom: -120px;
-      width: 300px;
-      height: 300px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(116, 230, 255, 0.22), transparent 70%);
-      filter: blur(10px);
+      background: radial-gradient(circle, rgba(116, 230, 255, 0.26), transparent 70%);
+      filter: blur(12px);
     }
 
     .hero-grid {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .hero-copy,
-    .hero-card,
-    .course-card,
-    .feature-card,
-    .cta-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy,
-    .hero-card,
-    .course-card,
-    .feature-card,
-    .cta-card {
-      padding: 28px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: end;
     }
 
     .eyebrow {
@@ -198,66 +185,47 @@
       align-items: center;
       gap: 10px;
       padding: 8px 14px;
-      border-radius: var(--radius-pill);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       font-size: 0.82rem;
       font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .page-title {
-      margin: 18px 0 12px;
+      margin: 18px 0 0;
       font-family: "Sora", sans-serif;
-      font-size: clamp(2.3rem, 4vw, 4.4rem);
-      line-height: 1.05;
-      max-width: 10ch;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      max-width: 12ch;
     }
 
-    .lead {
+    .page-lead {
+      margin: 18px 0 0;
+      max-width: 62ch;
       color: var(--muted);
-      font-size: 1.06rem;
-      max-width: 58ch;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .feature-item {
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .feature-item strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
     }
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
+      gap: 14px;
+      margin-top: 28px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 20px;
+      gap: 10px;
+      padding: 14px 22px;
       border: 1px solid transparent;
       border-radius: var(--radius-md);
-      cursor: pointer;
-      font-weight: 900;
+      font-weight: 800;
       transition: 0.25s ease;
     }
 
@@ -267,14 +235,56 @@
 
     .button-primary {
       color: #07111d;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+      background: linear-gradient(135deg, var(--accent), var(--warm));
+      box-shadow: 0 14px 34px rgba(116, 230, 255, 0.18);
     }
 
     .button-secondary {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.07);
       border-color: var(--line);
-      color: var(--text);
+    }
+
+    .panel,
+    .feature-card,
+    .course-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(17, 35, 59, 0.9), rgba(8, 16, 31, 0.94));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .panel h3,
+    .feature-card h3,
+    .course-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.22rem;
+    }
+
+    .panel p,
+    .feature-card p,
+    .course-card p {
+      color: var(--muted);
+    }
+
+    .metric-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .metric-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line-soft);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .metric-item strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1.14rem;
     }
 
     .section {
@@ -283,11 +293,11 @@
 
     .section-heading {
       display: flex;
-      justify-content: space-between;
       align-items: end;
+      justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .section-heading h2 {
@@ -296,13 +306,15 @@
       font-size: clamp(1.9rem, 3vw, 3rem);
     }
 
-    .section-heading p,
-    .muted {
+    .section-heading p {
+      margin: 0;
+      max-width: 62ch;
       color: var(--muted);
     }
 
     .courses-grid,
-    .features-grid {
+    .card-grid,
+    .footer-grid {
       display: grid;
       gap: 20px;
     }
@@ -311,7 +323,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .features-grid {
+    .card-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
@@ -326,14 +338,6 @@
       color: var(--accent);
       font-size: 0.82rem;
       font-weight: 800;
-    }
-
-    .course-card h3,
-    .feature-card h3,
-    .cta-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.22rem;
     }
 
     .list {
@@ -357,34 +361,39 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: linear-gradient(135deg, var(--accent), var(--warm));
     }
 
     .footer {
-      padding: 30px 0 46px;
+      padding: 26px 0 46px;
       border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      flex-wrap: wrap;
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+
+    .footer-note,
+    .muted {
+      color: var(--muted);
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .footer-links a {
-      padding: 10px 14px;
-      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--muted);
     }
 
@@ -417,7 +426,7 @@
 
       .main-nav {
         position: absolute;
-        top: calc(100% + 10px);
+        top: calc(100% + 12px);
         left: 0;
         right: 0;
         display: none;
@@ -425,9 +434,9 @@
         align-items: stretch;
         gap: 8px;
         padding: 16px;
-        border-radius: 24px;
         border: 1px solid var(--line);
-        background: rgba(7, 13, 23, 0.98);
+        border-radius: 24px;
+        background: rgba(5, 11, 20, 0.98);
         box-shadow: var(--shadow);
       }
 
@@ -437,30 +446,38 @@
 
       .hero-grid,
       .courses-grid,
-      .features-grid {
+      .card-grid,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
       .hero {
-        padding: 68px 0 54px;
+        padding: 78px 0 58px;
       }
 
-      .hero-copy,
-      .hero-card,
-      .course-card,
-      .feature-card,
-      .cta-card {
-        padding: 22px;
+      .section {
+        padding: 58px 0;
       }
 
       .page-title {
-        max-width: 12ch;
+        max-width: 14ch;
+      }
+
+      .panel,
+      .feature-card,
+      .course-card {
+        padding: 22px;
       }
 
       .brand-copy span {
         font-size: 0.82rem;
+      }
+
+      .floating-whatsapp {
+        padding: 12px 16px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -469,50 +486,50 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">
-        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy" onerror="this.style.display='none'">
         <div class="brand-copy">
           <strong>Expressive English Academy</strong>
           <span>Programas pensados para cada etapa de la vida.</span>
         </div>
       </a>
 
-      <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
 
       <nav class="main-nav" id="siteNav">
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a class="active" href="courses.html">Cursos</a>
-        <a href="gallery.html">Galeria</a>
+        <a href="gallery.html">Galer&iacute;a</a>
         <a class="nav-cta" href="donate.html">Apoya</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" style="--hero-image: url('foto11.jpg.png');">
       <div class="container hero-grid">
-        <div class="hero-copy">
+        <div>
           <span class="eyebrow">Nuestros programas</span>
-          <h1 class="page-title">Cursos claros, utiles y listos para el mundo real.</h1>
-          <p class="lead">
-            Cada programa esta disenado para que el estudiante avance con seguridad,
-            desarrolle comunicacion real y vea el ingles como una herramienta para crecer.
+          <h1 class="page-title">Cursos claros, &uacute;tiles y listos para el mundo real.</h1>
+          <p class="page-lead">
+            Cada programa est&aacute; dise&ntilde;ado para que el estudiante avance con seguridad,
+            desarrolle comunicaci&oacute;n real y vea el ingl&eacute;s como una herramienta para crecer.
           </p>
         </div>
 
-        <div class="hero-card">
-          <h3>Lo que comparten todos nuestros cursos</h3>
-          <div class="feature-list">
-            <div class="feature-item">
+        <div class="panel">
+          <h3>Lo que todos nuestros cursos comparten</h3>
+          <div class="metric-list">
+            <div class="metric-item">
               <strong>Enfoque comunicativo</strong>
-              <span>Menos miedo a hablar y mas practica significativa.</span>
+              <span>Menos miedo a hablar y m&aacute;s pr&aacute;ctica significativa.</span>
             </div>
-            <div class="feature-item">
+            <div class="metric-item">
               <strong>Ambiente motivador</strong>
-              <span>Clases cercanas y dinamicas para mantener el avance.</span>
+              <span>Clases cercanas y din&aacute;micas para mantener el avance.</span>
             </div>
-            <div class="feature-item">
-              <strong>Proposito real</strong>
+            <div class="metric-item">
+              <strong>Prop&oacute;sito real</strong>
               <span>Aprender para estudiar, trabajar y abrir nuevas puertas.</span>
             </div>
           </div>
@@ -523,19 +540,20 @@
     <section class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Programas de ingles</h2>
+          <h2>Programas de ingl&eacute;s</h2>
           <p>
-            Una presentacion mas elegante, facil de leer y mucho mejor organizada en celular.
+            La oferta se presenta ahora con mejor jerarqu&iacute;a visual y una lectura m&aacute;s c&oacute;moda,
+            especialmente en el celular.
           </p>
         </div>
 
         <div class="courses-grid">
           <article class="course-card">
-            <span class="badge">Ninos</span>
+            <span class="badge">Ni&ntilde;os</span>
             <h3>English for Kids (EFK)</h3>
-            <p class="muted">
-              Un programa dinamico y amigable para que los ninos comiencen a relacionarse
-              con el ingles de forma natural y divertida.
+            <p>
+              Un programa din&aacute;mico y amigable para que los ni&ntilde;os comiencen a relacionarse
+              con el ingl&eacute;s de forma natural y divertida.
             </p>
             <div class="list">
               <span>Actividades visuales y participativas.</span>
@@ -550,13 +568,13 @@
           <article class="course-card">
             <span class="badge">Adolescentes</span>
             <h3>English for Teens (EFT)</h3>
-            <p class="muted">
-              Enfocado en fortalecer comunicacion, comprension y seguridad para estudiantes
-              que quieren destacarse en su formacion.
+            <p>
+              Enfocado en fortalecer la comunicaci&oacute;n, la comprensi&oacute;n y la seguridad en estudiantes
+              que quieren destacarse en su formaci&oacute;n.
             </p>
             <div class="list">
-              <span>Mas expresion oral y comprension activa.</span>
-              <span>Herramientas para el entorno academico.</span>
+              <span>M&aacute;s expresi&oacute;n oral y comprensi&oacute;n activa.</span>
+              <span>Herramientas para el entorno acad&eacute;mico.</span>
               <span>Un espacio que motiva a participar.</span>
             </div>
             <div class="button-row">
@@ -567,13 +585,13 @@
           <article class="course-card">
             <span class="badge">Adultos</span>
             <h3>English for Adults (EFA)</h3>
-            <p class="muted">
-              Ideal para quienes quieren usar el ingles en su vida diaria, en nuevas metas
+            <p>
+              Ideal para quienes quieren usar el ingl&eacute;s en su vida diaria, en nuevas metas
               profesionales o en contextos internacionales.
             </p>
             <div class="list">
-              <span>Practica util para situaciones reales.</span>
-              <span>Mas confianza para hablar y entender.</span>
+              <span>Pr&aacute;ctica &uacute;til para situaciones reales.</span>
+              <span>M&aacute;s confianza para hablar y entender.</span>
               <span>Avance pensado para adultos ocupados.</span>
             </div>
             <div class="button-row">
@@ -584,14 +602,14 @@
           <article class="course-card">
             <span class="badge">Trabajo</span>
             <h3>English for Call Center (EFCC)</h3>
-            <p class="muted">
-              Preparacion orientada a entrevistas, comunicacion profesional, fluidez y acceso
-              a oportunidades laborales mejor pagadas.
+            <p>
+              Preparaci&oacute;n orientada a entrevistas, comunicaci&oacute;n profesional, fluidez y acceso
+              a oportunidades laborales mejor remuneradas.
             </p>
             <div class="list">
               <span>Lenguaje laboral y seguridad al responder.</span>
-              <span>Practica pensada para empleo real.</span>
-              <span>Mejor preparacion para procesos de seleccion.</span>
+              <span>Pr&aacute;ctica pensada para un empleo real.</span>
+              <span>Mejor preparaci&oacute;n para procesos de selecci&oacute;n.</span>
             </div>
             <div class="button-row">
               <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20English%20for%20Call%20Center" target="_blank" rel="noopener">Inscribirme</a>
@@ -604,58 +622,43 @@
     <section class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Como ensenamos</h2>
+          <h2>C&oacute;mo ense&ntilde;amos</h2>
           <p>
-            Un estilo visual mas actual tambien ayuda a que tu mensaje se sienta mas profesional y confiable.
+            Adem&aacute;s del nuevo look, esta estructura hace que la informaci&oacute;n importante
+            se entienda r&aacute;pido y motive mejor al visitante.
           </p>
         </div>
 
-        <div class="features-grid">
+        <div class="card-grid">
           <article class="feature-card">
-            <span class="badge">Practica</span>
+            <span class="badge">Pr&aacute;ctica</span>
             <h3>Hablar desde temprano</h3>
-            <p class="muted">Buscamos que el estudiante participe, se exprese y use el idioma con mas naturalidad.</p>
+            <p>Buscamos que el estudiante participe, se exprese y use el idioma con m&aacute;s naturalidad.</p>
           </article>
 
           <article class="feature-card">
-            <span class="badge">Acompanamiento</span>
-            <h3>Retroalimentacion clara</h3>
-            <p class="muted">El progreso mejora cuando el estudiante sabe que corregir y como seguir avanzando.</p>
+            <span class="badge">Acompa&ntilde;amiento</span>
+            <h3>Retroalimentaci&oacute;n clara</h3>
+            <p>El progreso mejora cuando el estudiante sabe qu&eacute; corregir y c&oacute;mo seguir avanzando.</p>
           </article>
 
           <article class="feature-card">
             <span class="badge">Resultados</span>
-            <h3>Ingles con valor real</h3>
-            <p class="muted">El objetivo no es solo aprobar, sino abrir puertas a nuevas oportunidades reales.</p>
+            <h3>Ingl&eacute;s con valor real</h3>
+            <p>El objetivo no es solo aprobar, sino abrir puertas a nuevas oportunidades reales.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <article class="cta-card">
-          <span class="badge">Empieza hoy</span>
-          <h3>El siguiente paso puede comenzar con una conversacion</h3>
-          <p class="muted">
-            El ingles puede abrirte puertas a mejores ingresos y oportunidades.
-            Este sitio ahora tambien comunica eso con mas fuerza visual.
-          </p>
-          <div class="button-row">
-            <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20de%20ingles" target="_blank" rel="noopener">Contactanos</a>
-          </div>
-        </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
       <div>
-        <h3>Expressive English Academy</h3>
-        <p class="muted">
-          Programas creados para ayudar a estudiantes a crecer con mas confianza,
-          mejor comunicacion y nuevas oportunidades.
+        <h3>Listo para empezar</h3>
+        <p class="footer-note">
+          Tu sitio ahora presenta los cursos con m&aacute;s claridad y presencia visual, para que cada
+          visitante entienda mejor qu&eacute; programa necesita.
         </p>
       </div>
 
@@ -663,10 +666,10 @@
         <div class="footer-links">
           <a href="index.html">Inicio</a>
           <a href="about.html">Nosotros</a>
-          <a href="gallery.html">Galeria</a>
+          <a href="gallery.html">Galer&iacute;a</a>
           <a href="admin-media.html">Admin Media</a>
         </div>
-        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
+        <p class="muted" style="margin-top: 16px;">&copy; <span id="year"></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
@@ -686,15 +689,22 @@
       var siteNav = document.getElementById("siteNav");
       var year = document.getElementById("year");
 
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
       if (navToggle && siteNav) {
         navToggle.addEventListener("click", function () {
           var isOpen = siteNav.classList.toggle("open");
           navToggle.setAttribute("aria-expanded", String(isOpen));
         });
-      }
 
-      if (year) {
-        year.textContent = new Date().getFullYear();
+        siteNav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            siteNav.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
       }
     })();
   </script>
