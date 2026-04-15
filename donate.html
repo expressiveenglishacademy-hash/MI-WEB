@@ -3,10 +3,467 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Apoya a Expressive English Academy y ayuda a crear oportunidades reales por medio del ingles.">
-  <meta name="theme-color" content="#081220">
   <title>Expressive English Academy | Apoya</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#081220">
+  <meta name="description" content="Apoya a Expressive English Academy y ayuda a crear oportunidades reales por medio del ingles.">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+
+    :root {
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f7fbff;
+      --muted: #bfd0e6;
+      --accent: #74e6ff;
+      --accent-2: #ffd37b;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
+        linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(5, 10, 18, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .main-nav .nav-cta {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 900;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 72px;
+      background:
+        linear-gradient(125deg, rgba(5, 11, 20, 0.82), rgba(5, 11, 20, 0.46)),
+        url("foto10.jpg.png") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(116, 230, 255, 0.22), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .feature-card,
+    .support-card,
+    .cta-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy,
+    .hero-card,
+    .feature-card,
+    .support-card,
+    .cta-card {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .page-title {
+      margin: 18px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.3rem, 4vw, 4.4rem);
+      line-height: 1.05;
+      max-width: 10ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 58ch;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .cards-grid,
+    .support-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cards-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .support-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(116, 230, 255, 0.12);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .feature-card h3,
+    .support-card h3,
+    .cta-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.22rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .list span {
+      position: relative;
+      display: block;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #2ee17b, #16a055);
+      color: #04110a;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(7, 13, 23, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .hero-grid,
+      .cards-grid,
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 68px 0 54px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .feature-card,
+      .support-card,
+      .cta-card {
+        padding: 22px;
+      }
+
+      .page-title {
+        max-width: 12ch;
+      }
+
+      .brand-copy span {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -19,9 +476,9 @@
         </div>
       </a>
 
-      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
 
-      <nav class="main-nav" id="site-nav" data-nav>
+      <nav class="main-nav" id="siteNav">
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a href="courses.html">Cursos</a>
@@ -32,33 +489,34 @@
   </header>
 
   <main>
-    <section class="hero" style="--hero-image: url('foto10.jpg.png');">
+    <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <span class="eyebrow">Apoyo con impacto</span>
           <h1 class="page-title">Cambia una vida a traves del ingles.</h1>
-          <p class="page-lead">
+          <p class="lead">
             Tu apoyo puede ayudar a que mas estudiantes accedan a educacion, practica y
             oportunidades que mejoren su presente y su futuro.
           </p>
+
           <div class="button-row">
             <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20como%20donar%20o%20becar%20a%20un%20estudiante" target="_blank" rel="noopener">Quiero ayudar</a>
             <a class="button button-secondary" href="about.html">Conocer la mision</a>
           </div>
         </div>
 
-        <div class="panel">
+        <div class="hero-card">
           <h3>Por que tu apoyo importa</h3>
-          <div class="metric-list">
-            <div class="metric-item">
+          <div class="feature-list">
+            <div class="feature-item">
               <strong>Mas acceso a educacion</strong>
               <span>Ayuda a acercar clases de ingles a estudiantes con recursos limitados.</span>
             </div>
-            <div class="metric-item">
+            <div class="feature-item">
               <strong>Mejores oportunidades</strong>
               <span>El idioma abre puertas a empleos, estudios y crecimiento profesional.</span>
             </div>
-            <div class="metric-item">
+            <div class="feature-item">
               <strong>Impacto en familias</strong>
               <span>Un estudiante fortalecido tambien impulsa su hogar y su comunidad.</span>
             </div>
@@ -72,36 +530,35 @@
         <div class="section-heading">
           <h2>Tu ayuda se convierte en oportunidades reales</h2>
           <p>
-            La pagina de apoyo ahora tiene un mensaje mas claro, mejor visual y una estructura
-            que invita mas a conectar emocionalmente con la causa.
+            Una pagina mas clara y emotiva ayuda a que tu causa se vea mas seria, moderna y confiable.
           </p>
         </div>
 
-        <div class="card-grid">
+        <div class="cards-grid">
           <article class="feature-card">
             <span class="badge">Educacion</span>
             <h3>Clases de calidad</h3>
-            <p>Mas estudiantes pueden aprender en un ambiente que acompania y motiva.</p>
+            <p class="muted">Mas estudiantes pueden aprender en un ambiente que acompania y motiva.</p>
           </article>
 
           <article class="feature-card">
             <span class="badge">Conexion</span>
             <h3>Practica con hablantes nativos</h3>
-            <p>Las experiencias reales ayudan a romper el miedo y fortalecer la comunicacion.</p>
+            <p class="muted">Las experiencias reales ayudan a romper el miedo y fortalecer la comunicacion.</p>
           </article>
 
           <article class="feature-card">
             <span class="badge">Futuro</span>
             <h3>Puertas laborales y academicas</h3>
-            <p>El ingles puede marcar una diferencia directa en ingresos y nuevas metas.</p>
+            <p class="muted">El ingles puede marcar una diferencia directa en ingresos y nuevas metas.</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container split-layout">
-        <article class="split-card">
+      <div class="container support-grid">
+        <article class="support-card">
           <span class="badge">Formas de apoyar</span>
           <h3>Tu aporte puede llegar de varias maneras</h3>
           <div class="list">
@@ -111,10 +568,10 @@
           </div>
         </article>
 
-        <article class="split-card">
+        <article class="cta-card">
           <span class="badge">Resultado</span>
           <h3>Mas que una ayuda, es una oportunidad</h3>
-          <p>
+          <p class="muted">
             Cada apoyo ayuda a construir confianza, preparacion y nuevas posibilidades para
             estudiantes que quieren salir adelante.
           </p>
@@ -127,10 +584,10 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div>
-        <h3>Apoyar tambien es ensenar</h3>
-        <p class="footer-note">
+        <h3>Expressive English Academy</h3>
+        <p class="muted">
           Tu contribucion puede ayudar a que mas personas accedan al ingles como una herramienta
           de dignidad, progreso y nuevas oportunidades.
         </p>
@@ -143,7 +600,7 @@
           <a href="gallery.html">Galeria</a>
           <a href="admin-media.html">Admin Media</a>
         </div>
-        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
@@ -157,6 +614,23 @@
     WhatsApp
   </a>
 
-  <script src="main.js"></script>
+  <script>
+    (function () {
+      var navToggle = document.getElementById("navToggle");
+      var siteNav = document.getElementById("siteNav");
+      var year = document.getElementById("year");
+
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", function () {
+          var isOpen = siteNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+    })();
+  </script>
 </body>
 </html>
