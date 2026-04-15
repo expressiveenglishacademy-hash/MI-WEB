@@ -1,6 +1,6 @@
 (function () {
   var ACCESS_KEY = "eea-admin-access";
-  var ADMIN_PASSCODE = "CHANGE-THIS-CODE";
+  var ADMIN_PASSCODE = "8681";
 
   var loginPanel = document.querySelector("[data-admin-login]");
   var dashboardPanel = document.querySelector("[data-admin-dashboard]");
