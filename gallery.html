@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Panel simple para subir y eliminar fotos de la galeria de Expressive English Academy.">
+  <meta name="description" content="Galeria de Expressive English Academy con experiencias reales de estudiantes practicando ingles.">
   <meta name="theme-color" content="#081220">
-  <title>Expressive English Academy | Admin Media</title>
+  <title>Expressive English Academy | Galeria</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
         <div class="brand-copy">
           <strong>Expressive English Academy</strong>
-          <span>Admin Media para actualizar tu galeria mas rapido.</span>
+          <span>Momentos reales de aprendizaje, confianza y crecimiento.</span>
         </div>
       </a>
 
@@ -25,100 +25,112 @@
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a href="courses.html">Cursos</a>
-        <a href="gallery.html">Galeria</a>
-        <a class="nav-cta active" href="admin-media.html">Admin Media</a>
+        <a class="active" href="gallery.html">Galeria</a>
+        <a class="nav-cta" href="donate.html">Apoya</a>
       </nav>
     </div>
   </header>
 
-  <main class="section">
-    <div class="container admin-grid">
-      <aside class="form-card">
-        <div class="admin-lock">Admin Media</div>
-        <h3>Panel simple para tus fotos</h3>
-        <p>
-          Desde aqui puedes subir imagenes nuevas, agregar un titulo, escribir una pequena
-          descripcion y eliminar fotos de la galeria cuando lo necesites.
-        </p>
-        <div class="list">
-          <span>Cambia el codigo de acceso dentro de <strong>admin-media.js</strong>.</span>
-          <span>Las fotos se guardan en este navegador usando almacenamiento local.</span>
-          <span>Si luego quieres actualizacion en vivo para todos los visitantes, el siguiente paso es Firebase o Cloudinary.</span>
+  <main>
+    <section class="hero" style="--hero-image: url('foto13.jpg.jpg');">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Galeria viva</span>
+          <h1 class="page-title">Experiencias que muestran el impacto de aprender ingles.</h1>
+          <p class="page-lead">
+            Esta pagina ahora se ve mucho mejor en movil y, ademas, puede actualizarse desde el
+            panel Admin Media sin que tengas que volver a editar la galeria manualmente.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="admin-media.html">Abrir Admin Media</a>
+            <a class="button button-secondary" href="courses.html">Ver cursos</a>
+          </div>
         </div>
-        <div class="status-box" data-admin-status>Ingresa tu codigo para abrir el panel.</div>
-      </aside>
 
-      <section>
-        <div class="form-card admin-panel active" data-admin-login>
-          <h3>Entrar como administrador</h3>
-          <p>Usa tu codigo privado para administrar las imagenes.</p>
-          <form data-admin-form>
-            <div class="field">
-              <label for="admin-passcode">Codigo de acceso</label>
-              <input id="admin-passcode" data-admin-passcode type="password" placeholder="Escribe tu codigo">
+        <div class="panel">
+          <h3>Como funciona tu nueva galeria</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Subir foto</strong>
+              <span>Desde Admin Media puedes cargar una imagen nueva con titulo y descripcion.</span>
             </div>
-            <button class="button button-primary" type="submit">Entrar</button>
-          </form>
-          <p class="small-note">
-            Importante: este panel es practico para una web estatica, pero no es seguridad real de servidor.
+            <div class="metric-item">
+              <strong>Eliminar foto</strong>
+              <span>Tambien puedes quitar imagenes sin tocar el codigo de la galeria.</span>
+            </div>
+            <div class="metric-item">
+              <strong>Actualizacion local inmediata</strong>
+              <span>Los cambios se reflejan de inmediato en este navegador.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Nuestros estudiantes practicando con hablantes nativos</h2>
+          <p>
+            Un layout mas limpio, respirado y moderno para que las fotos se vean mejor y el sitio
+            transmita mas confianza desde el primer vistazo.
           </p>
         </div>
 
-        <div class="admin-panel" data-admin-dashboard>
-          <div class="form-card">
-            <h3>Subir nueva foto</h3>
-            <p>Agrega una imagen y se reflejara automaticamente en la pagina de galeria en este navegador.</p>
-            <form data-upload-form>
-              <div class="field">
-                <label for="photo-file">Imagen</label>
-                <input id="photo-file" data-upload-file type="file" accept="image/*">
-              </div>
-
-              <div class="field">
-                <label for="photo-title">Titulo</label>
-                <input id="photo-title" data-upload-title type="text" placeholder="Ejemplo: Clase interactiva">
-              </div>
-
-              <div class="field">
-                <label for="photo-caption">Descripcion</label>
-                <textarea id="photo-caption" data-upload-caption placeholder="Escribe una breve descripcion de la foto"></textarea>
-              </div>
-
-              <div class="admin-actions">
-                <button class="button button-primary" type="submit">Subir foto</button>
-                <button class="button button-secondary" type="button" data-admin-logout>Cerrar panel</button>
-                <button class="button button-ghost" type="button" data-admin-reset>Restaurar galeria base</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="form-card" style="margin-top: 20px;">
-            <h3>Fotos actuales</h3>
-            <p>Elimina las imagenes que ya no quieras mostrar.</p>
-            <div class="admin-photo-grid" data-admin-photo-grid></div>
-          </div>
+        <div class="gallery-toolbar">
+          <p class="muted" data-gallery-status>La galeria esta cargando.</p>
+          <a class="button button-ghost" href="admin-media.html">Administrar fotos</a>
         </div>
-      </section>
-    </div>
+
+        <div class="gallery-grid" data-gallery-grid></div>
+      </div>
+    </section>
   </main>
+
+  <div class="modal" data-gallery-modal aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-gallery-close aria-label="Cerrar">X</button>
+      <button class="modal-arrow prev" type="button" data-gallery-prev aria-label="Anterior">&#10094;</button>
+      <button class="modal-arrow next" type="button" data-gallery-next aria-label="Siguiente">&#10095;</button>
+      <img data-gallery-image src="" alt="">
+      <div class="modal-copy">
+        <strong data-gallery-title></strong>
+        <span class="muted" data-gallery-caption></span>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <h3>Admin Media</h3>
+        <h3>Galeria Expressive English Academy</h3>
         <p class="footer-note">
-          Esta version ya te evita editar manualmente la lista de fotos dentro de la pagina de galeria.
+          Esta pagina ya queda preparada para que agregues o elimines imagenes desde un panel
+          sencillo, sin tener que editar la lista de fotos dentro de la galeria.
         </p>
       </div>
 
       <div>
         <div class="footer-links">
           <a href="index.html">Inicio</a>
-          <a href="gallery.html">Galeria</a>
+          <a href="about.html">Nosotros</a>
           <a href="courses.html">Cursos</a>
-          <a href="donate.html">Apoya</a>
+          <a href="admin-media.html">Admin Media</a>
         </div>
         <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
+
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20y%20tambien%20como%20puedo%20apoyar%20con%20donaciones"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
+  </a>
+
+  <script src="main.js"></script>
+</body>
+</html>
