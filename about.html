@@ -1,197 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Nosotros - Expressive English Academy</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1f44;
-      color: white;
-    }
-
-    /* HEADER */
-    header {
-      background: #081633;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #00c3ff;
-    }
-
-    /* CONTENIDO */
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    p {
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    .section {
-      margin-top: 50px;
-    }
-
-    .highlight {
-      color: #00c3ff;
-      font-weight: bold;
-    }
-
-    /* FUNDADOR */
-    .founder img {
-      width: 220px;
-      border-radius: 15px;
-      margin-top: 15px;
-    }
-
-    /* REDES */
-    .social {
-      margin-top: 40px;
-    }
-
-    .social a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-    }
-
-    .facebook {
-      background-color: #1877f2;
-    }
-
-    .instagram {
-      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
-    }
-
-    .social a:hover {
-      opacity: 0.8;
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce la historia, mision y vision de Expressive English Academy.">
+  <meta name="theme-color" content="#081220">
+  <title>Expressive English Academy | Nosotros</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <div class="brand-copy">
+          <strong>Expressive English Academy</strong>
+          <span>Educacion, comunidad y nuevas oportunidades.</span>
+        </div>
+      </a>
 
-<header>
-  <h1>Expressive English Academy</h1>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Nosotros</a>
-    <a href="courses.html">Cursos</a>
-    <a href="gallery.html">Galería</a>
-    <a href="donate.html">❤️ Apoya</a>
-  </nav>
+      <nav class="main-nav" id="site-nav" data-nav>
+        <a href="index.html">Inicio</a>
+        <a class="active" href="about.html">Nosotros</a>
+        <a href="courses.html">Cursos</a>
+        <a href="gallery.html">Galeria</a>
+        <a class="nav-cta" href="donate.html">Apoya</a>
+      </nav>
+    </div>
+  </header>
 
-  <img src="foto8.jpg.jpg" width="80" style="border-radius:10px;">
-</header>
+  <main>
+    <section class="hero" style="--hero-image: url('foto7.jpg.jpg');">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Nuestra historia</span>
+          <h1 class="page-title">Una academia creada para transformar vidas.</h1>
+          <p class="page-lead">
+            Expressive English Academy fue fundada en 2024 con una meta clara:
+            acercar educacion en ingles que sea accesible, practica y capaz de generar cambios reales.
+          </p>
+        </div>
 
-<div class="container">
+        <div class="panel">
+          <h3>Lo que creemos</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>El ingles abre puertas</strong>
+              <span>Mas acceso a empleo, estudios y crecimiento personal.</span>
+            </div>
+            <div class="metric-item">
+              <strong>La educacion debe sentirse cercana</strong>
+              <span>Aprender mejor cuando hay apoyo, paciencia y claridad.</span>
+            </div>
+            <div class="metric-item">
+              <strong>El impacto empieza en comunidad</strong>
+              <span>La academia existe para servir y fortalecer familias nicaraguenses.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h2>Sobre Nosotros</h2>
+    <section class="section">
+      <div class="container split-layout">
+        <article class="split-card">
+          <span class="badge">Quienes somos</span>
+          <h3>Formacion con proposito</h3>
+          <p>
+            Somos una academia autosostenible comprometida con ninos, jovenes y adultos
+            que desean mejorar su futuro por medio del ingles. Buscamos que cada estudiante
+            desarrolle habilidades utiles para el mundo real.
+          </p>
+        </article>
 
-  <p>
-    Expressive English Academy fue fundada en el año <span class="highlight">2024</span> 
-    con el propósito de transformar vidas a través del aprendizaje del idioma inglés.
-  </p>
+        <article class="split-card">
+          <span class="badge">Nuestro enfoque</span>
+          <h3>Claridad, confianza y accion</h3>
+          <p>
+            Ensenamos de manera practica y humana para que hablar ingles no se sienta lejano,
+            sino posible, alcanzable y relevante para la vida diaria.
+          </p>
+        </article>
+      </div>
+    </section>
 
-  <p>
-    Somos una academia autosostenible comprometida con el desarrollo educativo de niños, 
-    jóvenes y adultos en Nicaragua, brindando herramientas que generan oportunidades reales 
-    de crecimiento personal y profesional.
-  </p>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Mision, vision e impacto</h2>
+          <p>
+            Todo en la academia esta pensado para que el aprendizaje tenga valor real,
+            tanto en el aula como fuera de ella.
+          </p>
+        </div>
 
-  <p>
-    Creemos que el inglés es la llave para acceder a mejores empleos, mayores ingresos 
-    y nuevas oportunidades en un mundo cada vez más globalizado.
-  </p>
+        <div class="card-grid">
+          <article class="feature-card">
+            <span class="badge">Mision</span>
+            <h3>Educacion accesible y de calidad</h3>
+            <p>
+              Brindar formacion en ingles que sea clara, util y accesible, especialmente
+              para comunidades con recursos limitados.
+            </p>
+          </article>
 
-  <div class="section">
-    <h2>Nuestra Misión</h2>
-    <p>
-      Brindar educación en inglés accesible y de calidad, especialmente a comunidades 
-      con recursos limitados.
-    </p>
-  </div>
+          <article class="feature-card">
+            <span class="badge">Vision</span>
+            <h3>Impacto reconocido</h3>
+            <p>
+              Ser una academia que destaque por su impacto social, su acompanamiento humano
+              y la confianza que construye en cada estudiante.
+            </p>
+          </article>
 
-  <div class="section">
-    <h2>Nuestra Visión</h2>
-    <p>
-      Ser una academia reconocida por su impacto social, formando estudiantes con confianza 
-      y habilidades reales en inglés.
-    </p>
-  </div>
+          <article class="feature-card">
+            <span class="badge">Valor</span>
+            <h3>Oportunidades que cambian historias</h3>
+            <p>
+              Creemos en el ingles como una llave para mejores empleos, mayores ingresos
+              y nuevas metas personales y profesionales.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="section founder">
-    <h2>Nuestro Fundador</h2>
+    <section class="section">
+      <div class="container">
+        <article class="split-card founder-card">
+          <img src="foto7.jpg.jpg" alt="Jose Andres Martinez Reyes">
+          <div>
+            <span class="badge">Nuestro fundador</span>
+            <h3>Jose Andres Martinez Reyes</h3>
+            <p>
+              Originario de La Concepcion, Masaya, y Licenciado en Lengua Extranjera Ingles,
+              ha enfocado su trabajo en crear oportunidades reales para la juventud y las familias.
+            </p>
+            <div class="list">
+              <span>Vision social con enfoque educativo.</span>
+              <span>Compromiso con el crecimiento de la comunidad.</span>
+              <span>Una academia que busca resultados humanos y profesionales.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <p>
-      <span class="highlight">José Andrés Martínez Reyes</span>, originario de La Concepción, Masaya, 
-      es Licenciado en Lengua Extranjera Inglés. Su visión es crear oportunidades reales 
-      para las nuevas generaciones.
-    </p>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Siguenos y acompania nuestro crecimiento</h2>
+          <p>
+            Comparte nuestras actividades, clases y avances para que mas personas conozcan
+            el impacto de este proyecto.
+          </p>
+        </div>
 
-    <img src="foto7.jpg.jpg">
-  </div>
+        <div class="social-row">
+          <a class="social-pill" href="https://www.facebook.com/p/Expressive-English-Academy-61554703284587/" target="_blank" rel="noopener">Facebook</a>
+          <a class="social-pill" href="https://www.instagram.com/expressiveenglishacademy/" target="_blank" rel="noopener">Instagram</a>
+          <a class="social-pill" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20Expressive%20English%20Academy" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- REDES SOCIALES -->
-  <div class="section social">
-    <h2>Síguenos en nuestras redes</h2>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Expressive English Academy</h3>
+        <p class="footer-note">
+          Una academia nacida para que el ingles genere impacto social, confianza personal
+          y crecimiento real en Nicaragua.
+        </p>
+      </div>
 
-    <p>
-      Mantente al día con nuestras actividades, clases y logros de nuestros estudiantes.
-    </p>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="courses.html">Cursos</a>
+          <a href="gallery.html">Galeria</a>
+          <a href="admin-media.html">Admin Media</a>
+        </div>
+        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+      </div>
+    </div>
+  </footer>
 
-    <a href="https://www.facebook.com/p/Expressive-English-Academy-61554703284587/" target="_blank" class="facebook">
-      Facebook
-    </a>
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20y%20tambien%20como%20puedo%20apoyar%20con%20donaciones"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
+  </a>
 
-    <a href="https://www.instagram.com/expressiveenglishacademy/" target="_blank" class="instagram">
-      Instagram
-    </a>
-
-  </div>
-
-</div>
-
-<!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
-   target="_blank" 
-   style="
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: #25D366;
-   color: white;
-   padding: 15px 20px;
-   border-radius: 50px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-   z-index: 1000;
-   ">
-   💬 WhatsApp
-</a>
-
+  <script src="main.js"></script>
 </body>
 </html>
