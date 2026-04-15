@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel simple para subir y eliminar fotos de la galeria de Expressive English Academy.">
+  <meta name="theme-color" content="#081220">
+  <title>Expressive English Academy | Admin Media</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <div class="brand-copy">
+          <strong>Expressive English Academy</strong>
+          <span>Admin Media para actualizar tu galeria mas rapido.</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+      <nav class="main-nav" id="site-nav" data-nav>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Nosotros</a>
+        <a href="courses.html">Cursos</a>
+        <a href="gallery.html">Galeria</a>
+        <a class="nav-cta active" href="admin-media.html">Admin Media</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container admin-grid">
+      <aside class="form-card">
+        <div class="admin-lock">Admin Media</div>
+        <h3>Panel simple para tus fotos</h3>
+        <p>
+          Desde aqui puedes subir imagenes nuevas, agregar un titulo, escribir una pequena
+          descripcion y eliminar fotos de la galeria cuando lo necesites.
+        </p>
+        <div class="list">
+          <span>Cambia el codigo de acceso dentro de <strong>admin-media.js</strong>.</span>
+          <span>Las fotos se guardan en este navegador usando almacenamiento local.</span>
+          <span>Si luego quieres actualizacion en vivo para todos los visitantes, el siguiente paso es Firebase o Cloudinary.</span>
+        </div>
+        <div class="status-box" data-admin-status>Ingresa tu codigo para abrir el panel.</div>
+      </aside>
+
+      <section>
+        <div class="form-card admin-panel active" data-admin-login>
+          <h3>Entrar como administrador</h3>
+          <p>Usa tu codigo privado para administrar las imagenes.</p>
+          <form data-admin-form>
+            <div class="field">
+              <label for="admin-passcode">Codigo de acceso</label>
+              <input id="admin-passcode" data-admin-passcode type="password" placeholder="Escribe tu codigo">
+            </div>
+            <button class="button button-primary" type="submit">Entrar</button>
+          </form>
+          <p class="small-note">
+            Importante: este panel es practico para una web estatica, pero no es seguridad real de servidor.
+          </p>
+        </div>
+
+        <div class="admin-panel" data-admin-dashboard>
+          <div class="form-card">
+            <h3>Subir nueva foto</h3>
+            <p>Agrega una imagen y se reflejara automaticamente en la pagina de galeria en este navegador.</p>
+            <form data-upload-form>
+              <div class="field">
+                <label for="photo-file">Imagen</label>
+                <input id="photo-file" data-upload-file type="file" accept="image/*">
+              </div>
+
+              <div class="field">
+                <label for="photo-title">Titulo</label>
+                <input id="photo-title" data-upload-title type="text" placeholder="Ejemplo: Clase interactiva">
+              </div>
+
+              <div class="field">
+                <label for="photo-caption">Descripcion</label>
+                <textarea id="photo-caption" data-upload-caption placeholder="Escribe una breve descripcion de la foto"></textarea>
+              </div>
+
+              <div class="admin-actions">
+                <button class="button button-primary" type="submit">Subir foto</button>
+                <button class="button button-secondary" type="button" data-admin-logout>Cerrar panel</button>
+                <button class="button button-ghost" type="button" data-admin-reset>Restaurar galeria base</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-card" style="margin-top: 20px;">
+            <h3>Fotos actuales</h3>
+            <p>Elimina las imagenes que ya no quieras mostrar.</p>
+            <div class="admin-photo-grid" data-admin-photo-grid></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Admin Media</h3>
+        <p class="footer-note">
+          Esta version ya te evita editar manualmente la lista de fotos dentro de la pagina de galeria.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="gallery.html">Galeria</a>
+          <a href="courses.html">Cursos</a>
+          <a href="donate.html">Apoya</a>
+        </div>
+        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="admin-media.js"></script>
+</body>
+</html>
