@@ -1,189 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Apoya - Expressive English Academy</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1f44;
-      color: white;
-    }
-
-    /* HEADER */
-    header {
-      background: #081633;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #00c3ff;
-    }
-
-    /* HERO */
-    .hero {
-      background-image: url('foto10.jpg.png');
-      background-size: cover;
-      background-position: center;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .overlay {
-      background: rgba(0,0,0,0.7);
-      padding: 40px;
-      border-radius: 15px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .overlay h2 {
-      font-size: 32px;
-    }
-
-    /* CONTENIDO */
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .highlight {
-      color: #00c3ff;
-      font-weight: bold;
-    }
-
-    /* CARDS */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #0f2a5a, #081633);
-      padding: 25px;
-      border-radius: 15px;
-    }
-
-    /* BOTÓN */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      background: #00c3ff;
-      color: black;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: white;
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apoya a Expressive English Academy y ayuda a crear oportunidades reales por medio del ingles.">
+  <meta name="theme-color" content="#081220">
+  <title>Expressive English Academy | Apoya</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <div class="brand-copy">
+          <strong>Expressive English Academy</strong>
+          <span>Apoyar esta mision tambien es invertir en futuros mas fuertes.</span>
+        </div>
+      </a>
 
-<!-- HEADER -->
-<header>
-  <h1>Expressive English Academy</h1>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Nosotros</a>
-    <a href="courses.html">Cursos</a>
-    <a href="gallery.html">Galería</a>
-    <a href="donate.html">❤️ Apoya</a>
-  </nav>
+      <nav class="main-nav" id="site-nav" data-nav>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Nosotros</a>
+        <a href="courses.html">Cursos</a>
+        <a href="gallery.html">Galeria</a>
+        <a class="nav-cta active" href="donate.html">Apoya</a>
+      </nav>
+    </div>
+  </header>
 
-  <img src="foto8.jpg.jpg" width="80" style="border-radius:10px;">
-</header>
+  <main>
+    <section class="hero" style="--hero-image: url('foto10.jpg.png');">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Apoyo con impacto</span>
+          <h1 class="page-title">Cambia una vida a traves del ingles.</h1>
+          <p class="page-lead">
+            Tu apoyo puede ayudar a que mas estudiantes accedan a educacion, practica y
+            oportunidades que mejoren su presente y su futuro.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20como%20donar%20o%20becar%20a%20un%20estudiante" target="_blank" rel="noopener">Quiero ayudar</a>
+            <a class="button button-secondary" href="about.html">Conocer la mision</a>
+          </div>
+        </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="overlay">
-    <h2>Cambia una vida a través del inglés</h2>
-    <p>
-      Muchos niños en Nicaragua tienen sueños, pero no siempre las oportunidades.  
-      Tú puedes ser la razón por la que un estudiante logre un mejor futuro.
-    </p>
-  </div>
-</div>
+        <div class="panel">
+          <h3>Por que tu apoyo importa</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Mas acceso a educacion</strong>
+              <span>Ayuda a acercar clases de ingles a estudiantes con recursos limitados.</span>
+            </div>
+            <div class="metric-item">
+              <strong>Mejores oportunidades</strong>
+              <span>El idioma abre puertas a empleos, estudios y crecimiento profesional.</span>
+            </div>
+            <div class="metric-item">
+              <strong>Impacto en familias</strong>
+              <span>Un estudiante fortalecido tambien impulsa su hogar y su comunidad.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- CONTENIDO -->
-<div class="container">
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Tu ayuda se convierte en oportunidades reales</h2>
+          <p>
+            La pagina de apoyo ahora tiene un mensaje mas claro, mejor visual y una estructura
+            que invita mas a conectar emocionalmente con la causa.
+          </p>
+        </div>
 
-  <h2>¿Por qué tu apoyo importa?</h2>
+        <div class="card-grid">
+          <article class="feature-card">
+            <span class="badge">Educacion</span>
+            <h3>Clases de calidad</h3>
+            <p>Mas estudiantes pueden aprender en un ambiente que acompania y motiva.</p>
+          </article>
 
-  <p>
-    En Expressive English Academy trabajamos con estudiantes de comunidades con recursos limitados, 
-    brindándoles acceso a educación en inglés, una herramienta clave para cambiar su realidad.
-  </p>
+          <article class="feature-card">
+            <span class="badge">Conexion</span>
+            <h3>Practica con hablantes nativos</h3>
+            <p>Las experiencias reales ayudan a romper el miedo y fortalecer la comunicacion.</p>
+          </article>
 
-  <p>
-    Aprender inglés puede significar <span class="highlight">mejores ingresos, acceso a empleos 
-    internacionales y oportunidades reales</span> que impactan directamente a sus familias.
-  </p>
+          <article class="feature-card">
+            <span class="badge">Futuro</span>
+            <h3>Puertas laborales y academicas</h3>
+            <p>El ingles puede marcar una diferencia directa en ingresos y nuevas metas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="cards">
-    <div class="card">📚 Educación de calidad</div>
-    <div class="card">🌍 Práctica con hablantes nativos</div>
-    <div class="card">💼 Oportunidades laborales</div>
-    <div class="card">❤️ Apoyo a familias</div>
-  </div>
+    <section class="section">
+      <div class="container split-layout">
+        <article class="split-card">
+          <span class="badge">Formas de apoyar</span>
+          <h3>Tu aporte puede llegar de varias maneras</h3>
+          <div class="list">
+            <span>Becar total o parcialmente a un estudiante.</span>
+            <span>Hacer una donacion voluntaria.</span>
+            <span>Brindar apoyo continuo al programa.</span>
+          </div>
+        </article>
 
-  <h2 style="margin-top:40px;">¿Cómo puedes ayudar?</h2>
+        <article class="split-card">
+          <span class="badge">Resultado</span>
+          <h3>Mas que una ayuda, es una oportunidad</h3>
+          <p>
+            Cada apoyo ayuda a construir confianza, preparacion y nuevas posibilidades para
+            estudiantes que quieren salir adelante.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20como%20donar%20o%20becar%20a%20un%20estudiante" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-  <p>
-    Puedes apoyar de diferentes maneras:
-  </p>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Apoyar tambien es ensenar</h3>
+        <p class="footer-note">
+          Tu contribucion puede ayudar a que mas personas accedan al ingles como una herramienta
+          de dignidad, progreso y nuevas oportunidades.
+        </p>
+      </div>
 
-  <p>
-    🎓 Becando a un estudiante<br>
-    💰 Donación voluntaria<br>
-    🤝 Apoyo continuo al programa
-  </p>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="about.html">Nosotros</a>
+          <a href="gallery.html">Galeria</a>
+          <a href="admin-media.html">Admin Media</a>
+        </div>
+        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+      </div>
+    </div>
+  </footer>
 
-  <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20cómo%20donar%20o%20becar%20a%20un%20estudiante" target="_blank" class="btn">
-    Quiero ayudar
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20y%20tambien%20como%20puedo%20apoyar%20con%20donaciones"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
   </a>
 
-</div>
-
-<!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
-   target="_blank" 
-   style="
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: #25D366;
-   color: white;
-   padding: 15px 20px;
-   border-radius: 50px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-   z-index: 1000;
-   ">
-   💬 WhatsApp
-</a>
-
+  <script src="main.js"></script>
 </body>
 </html>
