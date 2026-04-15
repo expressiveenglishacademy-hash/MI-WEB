@@ -297,7 +297,7 @@
             </div>
             <div class="feature-item">
               <strong>Solo admin</strong>
-              <span>Solo tu correo admin puede subir o eliminar.</span>
+              <span>Solo tu cuenta de Google admin puede subir o eliminar.</span>
             </div>
           </div>
         </div>
@@ -305,10 +305,10 @@
         <div class="card">
           <h3>Estado</h3>
           <p class="muted">
-            Si ya publicaste reglas de Firestore y Storage, y creaste tu usuario en Authentication,
-            ya deberia funcionar.
+            Si ya publicaste reglas de Firestore y Storage, y activaste Google Sign-In en Firebase Authentication,
+            esto ya deberia funcionar.
           </p>
-          <div class="status-box" id="statusBox">Listo para iniciar sesion.</div>
+          <div class="status-box" id="statusBox">Listo para iniciar con Google.</div>
         </div>
       </div>
     </section>
@@ -316,17 +316,16 @@
     <section class="section">
       <div class="container admin-grid">
         <div>
-         <div class="card panel active" id="loginPanel">
-  <h2>Entrar como admin</h2>
-  <p class="muted">Inicia sesion con tu cuenta de Google admin.</p>
+          <div class="card panel active" id="loginPanel">
+            <h2>Entrar como admin</h2>
+            <p class="muted">Inicia sesion con tu cuenta de Google admin.</p>
 
-  <div class="button-row">
-    <button class="button button-primary" type="button" id="googleLoginBtn">
-      Entrar con Google
-    </button>
-  </div>
-</div>
-
+            <div class="button-row">
+              <button class="button button-primary" type="button" id="googleLoginBtn">
+                Entrar con Google
+              </button>
+            </div>
+          </div>
 
           <div class="card panel" id="dashboardPanel">
             <h2>Subir nueva foto</h2>
@@ -394,16 +393,34 @@
   </script>
 
   <script type="module">
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
-
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      deleteDoc,
+      doc,
+      getDocs,
+      onSnapshot,
+      orderBy,
+      query
+    } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      uploadBytes,
+      getDownloadURL,
+      deleteObject
+    } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-storage.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAtq1_6eUVQwAIRGDoEVVzchjX5xn_ZTjk",
@@ -435,14 +452,17 @@ import {
     const db = getFirestore(app);
     const storage = getStorage(app);
 
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+
     const statusBox = document.getElementById("statusBox");
     const loginPanel = document.getElementById("loginPanel");
     const dashboardPanel = document.getElementById("dashboardPanel");
-    const loginForm = document.getElementById("loginForm");
     const uploadForm = document.getElementById("uploadForm");
     const importBtn = document.getElementById("importBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const photoGrid = document.getElementById("photoGrid");
+    const googleLoginBtn = document.getElementById("googleLoginBtn");
 
     function setStatus(message) {
       statusBox.textContent = message;
@@ -509,6 +529,7 @@ import {
             if (item.storagePath) {
               await deleteObject(ref(storage, item.storagePath));
             }
+
             await deleteDoc(doc(db, "galleryImages", item.id));
             setStatus("Foto eliminada correctamente.");
           } catch (error) {
@@ -525,6 +546,7 @@ import {
     }
 
     const galleryQuery = query(collection(db, "galleryImages"), orderBy("createdAt", "desc"));
+
     onSnapshot(galleryQuery, (snapshot) => {
       const items = snapshot.docs.map((entry) => ({
         id: entry.id,
@@ -549,20 +571,33 @@ import {
       }
     });
 
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    getRedirectResult(auth).catch((error) => {
+      console.error(error);
+      setStatus("No se pudo completar el inicio con Google.");
+    });
 
-      const email = document.getElementById("adminEmail").value.trim();
-      const password = document.getElementById("adminPassword").value;
-
+    googleLoginBtn.addEventListener("click", async () => {
       try {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithPopup(auth, provider);
         setStatus("Inicio de sesion correcto.");
-        loginForm.reset();
-        document.getElementById("adminEmail").value = ADMIN_EMAIL;
       } catch (error) {
         console.error(error);
-        setStatus("No se pudo iniciar sesion. Verifica correo, contrasena y Firebase Auth.");
+
+        if (
+          error.code === "auth/popup-blocked" ||
+          error.code === "auth/popup-closed-by-user" ||
+          error.code === "auth/cancelled-popup-request"
+        ) {
+          try {
+            await signInWithRedirect(auth, provider);
+          } catch (redirectError) {
+            console.error(redirectError);
+            setStatus("No se pudo iniciar sesion con Google.");
+          }
+          return;
+        }
+
+        setStatus("No se pudo iniciar sesion con Google.");
       }
     });
 
@@ -623,6 +658,7 @@ import {
 
       try {
         setStatus("Subiendo imagen...");
+
         const filePath = "gallery/" + Date.now() + "-" + safeFileName(file.name);
         const fileRef = ref(storage, filePath);
 
@@ -645,7 +681,7 @@ import {
         setStatus("Foto subida correctamente. La galeria publica ya debe reflejarla.");
       } catch (error) {
         console.error(error);
-        setStatus("No se pudo subir la foto. Revisa Firebase config, Auth, Storage y reglas.");
+        setStatus("No se pudo subir la foto. Revisa Google Sign-In, Firebase config, Storage y reglas.");
       }
     });
   </script>
