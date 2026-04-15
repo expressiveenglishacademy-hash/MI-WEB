@@ -3,10 +3,467 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Conoce los cursos de ingles para ninos, adolescentes, adultos y preparacion laboral de Expressive English Academy.">
-  <meta name="theme-color" content="#081220">
   <title>Expressive English Academy | Cursos</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#081220">
+  <meta name="description" content="Conoce los cursos de ingles para ninos, adolescentes, adultos y preparacion laboral de Expressive English Academy.">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+
+    :root {
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f7fbff;
+      --muted: #bfd0e6;
+      --accent: #74e6ff;
+      --accent-2: #ffd37b;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
+        linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(5, 10, 18, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .main-nav .nav-cta {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 900;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 72px;
+      background:
+        linear-gradient(125deg, rgba(5, 11, 20, 0.82), rgba(5, 11, 20, 0.46)),
+        url("foto11.jpg.png") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(116, 230, 255, 0.22), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .course-card,
+    .feature-card,
+    .cta-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy,
+    .hero-card,
+    .course-card,
+    .feature-card,
+    .cta-card {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .page-title {
+      margin: 18px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.3rem, 4vw, 4.4rem);
+      line-height: 1.05;
+      max-width: 10ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 58ch;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .courses-grid,
+    .features-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .courses-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(116, 230, 255, 0.12);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .course-card h3,
+    .feature-card h3,
+    .cta-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.22rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .list span {
+      position: relative;
+      display: block;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #2ee17b, #16a055);
+      color: #04110a;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(7, 13, 23, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .hero-grid,
+      .courses-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 68px 0 54px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .course-card,
+      .feature-card,
+      .cta-card {
+        padding: 22px;
+      }
+
+      .page-title {
+        max-width: 12ch;
+      }
+
+      .brand-copy span {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -19,9 +476,9 @@
         </div>
       </a>
 
-      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
 
-      <nav class="main-nav" id="site-nav" data-nav>
+      <nav class="main-nav" id="siteNav">
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a class="active" href="courses.html">Cursos</a>
@@ -32,29 +489,29 @@
   </header>
 
   <main>
-    <section class="hero" style="--hero-image: url('foto11.jpg.png');">
+    <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <span class="eyebrow">Nuestros programas</span>
           <h1 class="page-title">Cursos claros, utiles y listos para el mundo real.</h1>
-          <p class="page-lead">
+          <p class="lead">
             Cada programa esta disenado para que el estudiante avance con seguridad,
             desarrolle comunicacion real y vea el ingles como una herramienta para crecer.
           </p>
         </div>
 
-        <div class="panel">
-          <h3>Lo que todos nuestros cursos comparten</h3>
-          <div class="metric-list">
-            <div class="metric-item">
+        <div class="hero-card">
+          <h3>Lo que comparten todos nuestros cursos</h3>
+          <div class="feature-list">
+            <div class="feature-item">
               <strong>Enfoque comunicativo</strong>
               <span>Menos miedo a hablar y mas practica significativa.</span>
             </div>
-            <div class="metric-item">
+            <div class="feature-item">
               <strong>Ambiente motivador</strong>
               <span>Clases cercanas y dinamicas para mantener el avance.</span>
             </div>
-            <div class="metric-item">
+            <div class="feature-item">
               <strong>Proposito real</strong>
               <span>Aprender para estudiar, trabajar y abrir nuevas puertas.</span>
             </div>
@@ -68,8 +525,7 @@
         <div class="section-heading">
           <h2>Programas de ingles</h2>
           <p>
-            La oferta se presenta ahora con mejor jerarquia visual y lectura mas comoda,
-            especialmente en celular.
+            Una presentacion mas elegante, facil de leer y mucho mejor organizada en celular.
           </p>
         </div>
 
@@ -77,7 +533,7 @@
           <article class="course-card">
             <span class="badge">Ninos</span>
             <h3>English for Kids (EFK)</h3>
-            <p>
+            <p class="muted">
               Un programa dinamico y amigable para que los ninos comiencen a relacionarse
               con el ingles de forma natural y divertida.
             </p>
@@ -94,7 +550,7 @@
           <article class="course-card">
             <span class="badge">Adolescentes</span>
             <h3>English for Teens (EFT)</h3>
-            <p>
+            <p class="muted">
               Enfocado en fortalecer comunicacion, comprension y seguridad para estudiantes
               que quieren destacarse en su formacion.
             </p>
@@ -111,7 +567,7 @@
           <article class="course-card">
             <span class="badge">Adultos</span>
             <h3>English for Adults (EFA)</h3>
-            <p>
+            <p class="muted">
               Ideal para quienes quieren usar el ingles en su vida diaria, en nuevas metas
               profesionales o en contextos internacionales.
             </p>
@@ -128,7 +584,7 @@
           <article class="course-card">
             <span class="badge">Trabajo</span>
             <h3>English for Call Center (EFCC)</h3>
-            <p>
+            <p class="muted">
               Preparacion orientada a entrevistas, comunicacion profesional, fluidez y acceso
               a oportunidades laborales mejor pagadas.
             </p>
@@ -150,41 +606,56 @@
         <div class="section-heading">
           <h2>Como ensenamos</h2>
           <p>
-            Ademas del nuevo look, esta estructura hace que la informacion importante
-            se entienda rapido y motive mejor al visitante.
+            Un estilo visual mas actual tambien ayuda a que tu mensaje se sienta mas profesional y confiable.
           </p>
         </div>
 
-        <div class="card-grid">
+        <div class="features-grid">
           <article class="feature-card">
             <span class="badge">Practica</span>
             <h3>Hablar desde temprano</h3>
-            <p>Buscamos que el estudiante participe, se exprese y use el idioma con mas naturalidad.</p>
+            <p class="muted">Buscamos que el estudiante participe, se exprese y use el idioma con mas naturalidad.</p>
           </article>
 
           <article class="feature-card">
             <span class="badge">Acompanamiento</span>
             <h3>Retroalimentacion clara</h3>
-            <p>El progreso mejora cuando el estudiante sabe que corregir y como seguir avanzando.</p>
+            <p class="muted">El progreso mejora cuando el estudiante sabe que corregir y como seguir avanzando.</p>
           </article>
 
           <article class="feature-card">
             <span class="badge">Resultados</span>
             <h3>Ingles con valor real</h3>
-            <p>El objetivo no es solo aprobar, sino abrir puertas a nuevas oportunidades reales.</p>
+            <p class="muted">El objetivo no es solo aprobar, sino abrir puertas a nuevas oportunidades reales.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="cta-card">
+          <span class="badge">Empieza hoy</span>
+          <h3>El siguiente paso puede comenzar con una conversacion</h3>
+          <p class="muted">
+            El ingles puede abrirte puertas a mejores ingresos y oportunidades.
+            Este sitio ahora tambien comunica eso con mas fuerza visual.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20de%20ingles" target="_blank" rel="noopener">Contactanos</a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div>
-        <h3>Listo para empezar</h3>
-        <p class="footer-note">
-          Tu sitio ahora presenta los cursos con mas claridad y presencia visual, para que cada
-          visitante entienda mejor que programa necesita.
+        <h3>Expressive English Academy</h3>
+        <p class="muted">
+          Programas creados para ayudar a estudiantes a crecer con mas confianza,
+          mejor comunicacion y nuevas oportunidades.
         </p>
       </div>
 
@@ -195,7 +666,7 @@
           <a href="gallery.html">Galeria</a>
           <a href="admin-media.html">Admin Media</a>
         </div>
-        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
@@ -209,6 +680,23 @@
     WhatsApp
   </a>
 
-  <script src="main.js"></script>
+  <script>
+    (function () {
+      var navToggle = document.getElementById("navToggle");
+      var siteNav = document.getElementById("siteNav");
+      var year = document.getElementById("year");
+
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", function () {
+          var isOpen = siteNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+    })();
+  </script>
 </body>
 </html>
