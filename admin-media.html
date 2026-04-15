@@ -316,26 +316,17 @@
     <section class="section">
       <div class="container admin-grid">
         <div>
-          <div class="card panel active" id="loginPanel">
-            <h2>Entrar como admin</h2>
-            <p class="muted">Usa tu correo y contrasena de Firebase Authentication.</p>
+         <div class="card panel active" id="loginPanel">
+  <h2>Entrar como admin</h2>
+  <p class="muted">Inicia sesion con tu cuenta de Google admin.</p>
 
-            <form id="loginForm">
-              <div class="field">
-                <label for="adminEmail">Correo admin</label>
-                <input id="adminEmail" type="email" value="expressiveenglishacademy@gmail.com" required>
-              </div>
+  <div class="button-row">
+    <button class="button button-primary" type="button" id="googleLoginBtn">
+      Entrar con Google
+    </button>
+  </div>
+</div>
 
-              <div class="field">
-                <label for="adminPassword">Contrasena</label>
-                <input id="adminPassword" type="password" placeholder="Escribe tu contrasena" required>
-              </div>
-
-              <div class="button-row">
-                <button class="button button-primary" type="submit">Entrar</button>
-              </div>
-            </form>
-          </div>
 
           <div class="card panel" id="dashboardPanel">
             <h2>Subir nueva foto</h2>
