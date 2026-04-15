@@ -1,228 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Cursos - Expressive English Academy</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1f44;
-      color: white;
-    }
-
-    /* HEADER */
-    header {
-      background: #081633;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #00c3ff;
-    }
-
-    /* TITULO */
-    .title {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .title h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .title p {
-      color: #ccc;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    /* CURSOS */
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 30px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #0f2a5a, #081633);
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    .badge {
-      background: #00c3ff;
-      color: black;
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-      display: inline-block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #00c3ff;
-      color: black;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: white;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      padding: 50px 20px;
-      background: #081633;
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce los cursos de ingles para ninos, adolescentes, adultos y preparacion laboral de Expressive English Academy.">
+  <meta name="theme-color" content="#081220">
+  <title>Expressive English Academy | Cursos</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <div class="brand-copy">
+          <strong>Expressive English Academy</strong>
+          <span>Programas pensados para cada etapa de la vida.</span>
+        </div>
+      </a>
 
-<!-- HEADER -->
-<header>
-  <h1>Expressive English Academy</h1>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Nosotros</a>
-    <a href="courses.html">Cursos</a>
-    <a href="gallery.html">Galería</a>
-    <a href="donate.html">❤️ Apoya</a>
-  </nav>
+      <nav class="main-nav" id="site-nav" data-nav>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Nosotros</a>
+        <a class="active" href="courses.html">Cursos</a>
+        <a href="gallery.html">Galeria</a>
+        <a class="nav-cta" href="donate.html">Apoya</a>
+      </nav>
+    </div>
+  </header>
 
-  <img src="foto8.jpg.jpg" width="80" style="border-radius:10px;">
-</header>
+  <main>
+    <section class="hero" style="--hero-image: url('foto11.jpg.png');">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Nuestros programas</span>
+          <h1 class="page-title">Cursos claros, utiles y listos para el mundo real.</h1>
+          <p class="page-lead">
+            Cada programa esta disenado para que el estudiante avance con seguridad,
+            desarrolle comunicacion real y vea el ingles como una herramienta para crecer.
+          </p>
+        </div>
 
-<!-- TITULO -->
-<div class="title">
-  <h2>Nuestros Programas de Inglés</h2>
-  <p>
-    Diseñados para cada etapa de tu vida. Aprende inglés de forma práctica, 
-    mejora tus oportunidades laborales y prepárate para un mejor futuro.
-  </p>
-</div>
+        <div class="panel">
+          <h3>Lo que todos nuestros cursos comparten</h3>
+          <div class="metric-list">
+            <div class="metric-item">
+              <strong>Enfoque comunicativo</strong>
+              <span>Menos miedo a hablar y mas practica significativa.</span>
+            </div>
+            <div class="metric-item">
+              <strong>Ambiente motivador</strong>
+              <span>Clases cercanas y dinamicas para mantener el avance.</span>
+            </div>
+            <div class="metric-item">
+              <strong>Proposito real</strong>
+              <span>Aprender para estudiar, trabajar y abrir nuevas puertas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- CURSOS -->
-<div class="courses">
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Programas de ingles</h2>
+          <p>
+            La oferta se presenta ahora con mejor jerarquia visual y lectura mas comoda,
+            especialmente en celular.
+          </p>
+        </div>
 
-  <div class="card">
-    <div class="badge">Niños</div>
-    <h3>English for Kids (EFK)</h3>
-    <p>
-      Clases dinámicas y divertidas donde los niños aprenden inglés jugando, 
-      desarrollando confianza desde temprana edad.
-    </p>
-    <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20English%20for%20Kids" target="_blank" class="btn">
-      Inscribirme
-    </a>
-  </div>
+        <div class="courses-grid">
+          <article class="course-card">
+            <span class="badge">Ninos</span>
+            <h3>English for Kids (EFK)</h3>
+            <p>
+              Un programa dinamico y amigable para que los ninos comiencen a relacionarse
+              con el ingles de forma natural y divertida.
+            </p>
+            <div class="list">
+              <span>Actividades visuales y participativas.</span>
+              <span>Desarrollo temprano de confianza.</span>
+              <span>Base fuerte para etapas futuras.</span>
+            </div>
+            <div class="button-row">
+              <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20English%20for%20Kids" target="_blank" rel="noopener">Inscribirme</a>
+            </div>
+          </article>
 
-  <div class="card">
-    <div class="badge">Adolescentes</div>
-    <h3>English for Teens (EFT)</h3>
-    <p>
-      Enfocado en comunicación, comprensión y desarrollo académico para jóvenes 
-      que buscan destacarse.
-    </p>
-    <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20English%20for%20Teens" target="_blank" class="btn">
-      Inscribirme
-    </a>
-  </div>
+          <article class="course-card">
+            <span class="badge">Adolescentes</span>
+            <h3>English for Teens (EFT)</h3>
+            <p>
+              Enfocado en fortalecer comunicacion, comprension y seguridad para estudiantes
+              que quieren destacarse en su formacion.
+            </p>
+            <div class="list">
+              <span>Mas expresion oral y comprension activa.</span>
+              <span>Herramientas para el entorno academico.</span>
+              <span>Un espacio que motiva a participar.</span>
+            </div>
+            <div class="button-row">
+              <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20English%20for%20Teens" target="_blank" rel="noopener">Inscribirme</a>
+            </div>
+          </article>
 
-  <div class="card">
-    <div class="badge">Adultos</div>
-    <h3>English for Adults (EFA)</h3>
-    <p>
-      Aprende inglés práctico para la vida diaria, trabajo y oportunidades 
-      internacionales.
-    </p>
-    <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20English%20for%20Adults" target="_blank" class="btn">
-      Inscribirme
-    </a>
-  </div>
+          <article class="course-card">
+            <span class="badge">Adultos</span>
+            <h3>English for Adults (EFA)</h3>
+            <p>
+              Ideal para quienes quieren usar el ingles en su vida diaria, en nuevas metas
+              profesionales o en contextos internacionales.
+            </p>
+            <div class="list">
+              <span>Practica util para situaciones reales.</span>
+              <span>Mas confianza para hablar y entender.</span>
+              <span>Avance pensado para adultos ocupados.</span>
+            </div>
+            <div class="button-row">
+              <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20English%20for%20Adults" target="_blank" rel="noopener">Inscribirme</a>
+            </div>
+          </article>
 
-  <div class="card">
-    <div class="badge">Trabajo</div>
-    <h3>English for Call Center (EFCC)</h3>
-    <p>
-      Prepárate para entrevistas, mejora tu fluidez y accede a trabajos mejor 
-      pagados en call centers.
-    </p>
-    <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20English%20for%20Call%20Center" target="_blank" class="btn">
-      Inscribirme
-    </a>
-  </div>
+          <article class="course-card">
+            <span class="badge">Trabajo</span>
+            <h3>English for Call Center (EFCC)</h3>
+            <p>
+              Preparacion orientada a entrevistas, comunicacion profesional, fluidez y acceso
+              a oportunidades laborales mejor pagadas.
+            </p>
+            <div class="list">
+              <span>Lenguaje laboral y seguridad al responder.</span>
+              <span>Practica pensada para empleo real.</span>
+              <span>Mejor preparacion para procesos de seleccion.</span>
+            </div>
+            <div class="button-row">
+              <a class="button button-primary" href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20English%20for%20Call%20Center" target="_blank" rel="noopener">Inscribirme</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Como ensenamos</h2>
+          <p>
+            Ademas del nuevo look, esta estructura hace que la informacion importante
+            se entienda rapido y motive mejor al visitante.
+          </p>
+        </div>
 
-<!-- CTA FINAL -->
-<div class="cta">
-  <h2>Empieza hoy a cambiar tu futuro</h2>
-  <p>
-    El inglés puede abrirte puertas a mejores ingresos y oportunidades. 
-    No esperes más.
-  </p>
-  <a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20de%20inglés" target="_blank" class="btn">
-    Contáctanos
+        <div class="card-grid">
+          <article class="feature-card">
+            <span class="badge">Practica</span>
+            <h3>Hablar desde temprano</h3>
+            <p>Buscamos que el estudiante participe, se exprese y use el idioma con mas naturalidad.</p>
+          </article>
+
+          <article class="feature-card">
+            <span class="badge">Acompanamiento</span>
+            <h3>Retroalimentacion clara</h3>
+            <p>El progreso mejora cuando el estudiante sabe que corregir y como seguir avanzando.</p>
+          </article>
+
+          <article class="feature-card">
+            <span class="badge">Resultados</span>
+            <h3>Ingles con valor real</h3>
+            <p>El objetivo no es solo aprobar, sino abrir puertas a nuevas oportunidades reales.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Listo para empezar</h3>
+        <p class="footer-note">
+          Tu sitio ahora presenta los cursos con mas claridad y presencia visual, para que cada
+          visitante entienda mejor que programa necesita.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="about.html">Nosotros</a>
+          <a href="gallery.html">Galeria</a>
+          <a href="admin-media.html">Admin Media</a>
+        </div>
+        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/50582581434?text=Hola%20quiero%20informacion%20sobre%20los%20cursos%20de%20ingles"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
   </a>
-</div>
 
-<!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
-   target="_blank" 
-   style="
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: #25D366;
-   color: white;
-   padding: 15px 20px;
-   border-radius: 50px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-   z-index: 1000;
-   ">
-   💬 WhatsApp
-</a>
-
+  <script src="main.js"></script>
 </body>
 </html>
