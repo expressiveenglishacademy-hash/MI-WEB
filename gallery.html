@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expressive English Academy | Galeria</title>
+  <meta name="description" content="Galería de Expressive English Academy con experiencias reales de aprendizaje y crecimiento.">
   <meta name="theme-color" content="#081220">
-  <meta name="description" content="Galeria de Expressive English Academy con experiencias reales de aprendizaje y crecimiento.">
+  <title>Expressive English Academy | Galería</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
@@ -23,7 +23,9 @@
       --max: 1180px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -36,13 +38,29 @@
         linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
     }
 
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
 
     .site-header {
-      position: sticky; top: 0; z-index: 80;
+      position: sticky;
+      top: 0;
+      z-index: 80;
       background: rgba(5,10,18,0.82);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
@@ -50,191 +68,334 @@
 
     .header-inner {
       position: relative;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
     }
 
     .brand {
-      display: flex; align-items: center; gap: 14px; min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
     }
 
     .brand-logo {
-      width: 58px; height: 58px; object-fit: cover;
-      border-radius: 18px; border: 1px solid rgba(255,255,255,0.15);
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
       box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.06);
     }
 
     .brand-copy strong {
-      display: block; font-family: "Sora", sans-serif; font-size: 1rem; line-height: 1.2;
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
     }
 
     .brand-copy span {
-      display: block; color: var(--muted); font-size: 0.9rem;
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .nav-toggle {
-      display: none; border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06); color: var(--text);
-      padding: 10px 16px; border-radius: var(--radius-pill);
-      font-weight: 800; cursor: pointer;
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      cursor: pointer;
     }
 
-    .main-nav { display: flex; align-items: center; gap: 10px; }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
     .main-nav a {
-      padding: 10px 14px; border-radius: var(--radius-pill);
-      color: var(--muted); transition: 0.25s ease;
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      transition: 0.25s ease;
     }
 
     .main-nav a:hover,
     .main-nav a.active {
-      color: var(--text); background: rgba(255,255,255,0.08);
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
     }
 
     .main-nav .nav-cta {
-      color: #07111d; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       font-weight: 900;
     }
 
     .hero {
-      position: relative; overflow: hidden; padding: 88px 0 68px;
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 68px;
       background:
         linear-gradient(125deg, rgba(5,11,20,0.84), rgba(5,11,20,0.46)),
         url("foto13.jpg.jpg") center/cover no-repeat;
     }
 
     .hero-grid {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1.08fr 0.92fr;
-      gap: 24px; align-items: stretch;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .card, .gallery-card {
+    .card,
+    .gallery-card {
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(16,37,66,0.9), rgba(7,14,26,0.94));
       box-shadow: var(--shadow);
     }
 
-    .card { padding: 28px; }
+    .card {
+      padding: 28px;
+    }
 
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 8px 14px; border-radius: var(--radius-pill);
-      border: 1px solid var(--line); background: rgba(255,255,255,0.06);
-      color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;
-      font-size: 0.82rem; font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 800;
     }
 
     .page-title {
-      margin: 18px 0 12px; font-family: "Sora", sans-serif;
-      font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: 1.05; max-width: 11ch;
+      margin: 18px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
+      line-height: 1.05;
+      max-width: 11ch;
     }
 
-    .muted { color: var(--muted); }
+    .muted {
+      color: var(--muted);
+    }
 
     .feature-list {
-      display: grid; gap: 14px; margin-top: 18px;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
     }
 
     .feature-item {
-      padding: 16px 18px; border-radius: 18px;
+      padding: 16px 18px;
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.05);
     }
 
     .feature-item strong {
-      display: block; color: var(--accent); margin-bottom: 4px;
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
     }
 
-    .section { padding: 70px 0; }
+    .section {
+      padding: 70px 0;
+    }
 
     .toolbar {
-      display: flex; justify-content: center; align-items: center;
-      margin-bottom: 24px; text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
     .gallery-grid {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
-    .gallery-card { overflow: hidden; }
+    .gallery-card {
+      overflow: hidden;
+    }
 
     .gallery-card button {
-      width: 100%; padding: 0; border: 0; background: none; color: inherit;
-      text-align: left; cursor: pointer;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
     }
 
     .gallery-card img {
-      width: 100%; height: 270px; object-fit: cover; transition: transform 0.35s ease;
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      transition: transform 0.35s ease;
     }
 
-    .gallery-card:hover img { transform: scale(1.04); }
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
 
-    .gallery-copy { padding: 18px; }
-    .gallery-copy strong { display: block; margin-bottom: 6px; }
+    .gallery-copy {
+      padding: 18px;
+    }
+
+    .gallery-copy strong {
+      display: block;
+      margin-bottom: 6px;
+    }
 
     .modal {
-      position: fixed; inset: 0; z-index: 120; display: none;
-      align-items: center; justify-content: center; padding: 20px;
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       background: rgba(4,8,14,0.88);
     }
 
-    .modal.active { display: flex; }
+    .modal.active {
+      display: flex;
+    }
 
     .modal-card {
-      position: relative; width: min(980px, 100%); padding: 18px;
-      border-radius: 28px; border: 1px solid var(--line);
-      background: rgba(6,13,24,0.97); box-shadow: var(--shadow);
+      position: relative;
+      width: min(980px, 100%);
+      padding: 18px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(6,13,24,0.97);
+      box-shadow: var(--shadow);
     }
 
     .modal-card img {
-      width: 100%; max-height: 76vh; object-fit: contain;
-      border-radius: var(--radius-lg); background: #030811;
+      width: 100%;
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      background: #030811;
     }
 
-    .modal-close, .modal-arrow {
-      position: absolute; width: 48px; height: 48px; border: 0;
-      border-radius: 50%; cursor: pointer; color: var(--text);
+    .modal-close,
+    .modal-arrow {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--text);
       background: rgba(255,255,255,0.08);
     }
 
-    .modal-close { top: 14px; right: 14px; }
-    .modal-arrow.prev { top: 50%; left: 12px; transform: translateY(-50%); }
-    .modal-arrow.next { top: 50%; right: 12px; transform: translateY(-50%); }
+    .modal-close {
+      top: 14px;
+      right: 14px;
+    }
 
-    .modal-copy { padding: 16px 6px 6px; }
-    .modal-copy strong { display: block; margin-bottom: 4px; }
+    .modal-arrow.prev {
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+    }
+
+    .modal-arrow.next {
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+    }
+
+    .modal-copy {
+      padding: 16px 6px 6px;
+    }
+
+    .modal-copy strong {
+      display: block;
+      margin-bottom: 4px;
+    }
 
     .footer {
-      padding: 30px 0 46px; border-top: 1px solid var(--line);
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
       background: rgba(255,255,255,0.02);
     }
 
     .footer-inner {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 20px; flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .floating-whatsapp {
-      position: fixed; right: 18px; bottom: 18px; z-index: 70;
-      display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px;
-      border-radius: var(--radius-pill); background: linear-gradient(135deg, #2ee17b, #16a055);
-      color: #04110a; font-weight: 900; box-shadow: 0 18px 40px rgba(37,211,102,0.3);
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #2ee17b, #16a055);
+      color: #04110a;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(37,211,102,0.3);
     }
 
     @media (max-width: 960px) {
-      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-
-      .main-nav {
-        position: absolute; top: calc(100% + 10px); left: 0; right: 0;
-        display: none; flex-direction: column; align-items: stretch; gap: 8px;
-        padding: 16px; border-radius: 24px; border: 1px solid var(--line);
-        background: rgba(7,13,23,0.98); box-shadow: var(--shadow);
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .main-nav.open { display: flex; }
+      .main-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(7,13,23,0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
 
       .hero-grid,
       .gallery-grid {
@@ -247,7 +408,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">
-        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy" onerror="this.style.display='none'">
         <div class="brand-copy">
           <strong>Expressive English Academy</strong>
           <span>Momentos reales de aprendizaje, confianza y crecimiento.</span>
@@ -260,7 +421,7 @@
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a href="courses.html">Cursos</a>
-        <a class="active" href="gallery.html">Galeria</a>
+        <a class="active" href="gallery.html">Galería</a>
         <a class="nav-cta" href="donate.html">Apoya</a>
       </nav>
     </div>
@@ -270,28 +431,28 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="card">
-          <span class="eyebrow">Galeria viva</span>
-          <h1 class="page-title">Momentos que muestran un ingles con impacto real.</h1>
+          <span class="eyebrow">Galería viva</span>
+          <h1 class="page-title">Momentos que muestran un inglés con impacto real.</h1>
           <p class="muted">
-            Aqui se muestran las fotos mas actuales de Expressive English Academy.
-            Esta pagina solo muestra la galeria publica.
+            Aquí se muestran las fotos más actuales de Expressive English Academy.
+            Esta página solo muestra la galería pública.
           </p>
         </div>
 
         <div class="card">
-          <h3>Nuestros estudiantes practicando con hablantes nativos</h3>
+          <h3>Nuestros estudiantes practicando con nativos del idioma inglés</h3>
           <div class="feature-list">
             <div class="feature-item">
               <strong>Confianza</strong>
-              <span>Experiencias reales que ayudan a hablar con mas seguridad.</span>
+              <span>Experiencias reales que ayudan a hablar con más seguridad.</span>
             </div>
             <div class="feature-item">
               <strong>Fluidez</strong>
-              <span>Interaccion que fortalece comprension y expresion oral.</span>
+              <span>Interacción que fortalece la comprensión y la expresión oral.</span>
             </div>
             <div class="feature-item">
               <strong>Crecimiento</strong>
-              <span>El ingles como herramienta para nuevas oportunidades.</span>
+              <span>El inglés como herramienta para nuevas oportunidades.</span>
             </div>
           </div>
         </div>
@@ -301,7 +462,7 @@
     <section class="section">
       <div class="container">
         <div class="toolbar">
-          <p class="muted" id="galleryStatus">Cargando galeria...</p>
+          <p class="muted" id="galleryStatus">Cargando galería...</p>
         </div>
 
         <div class="gallery-grid" id="galleryGrid"></div>
@@ -326,7 +487,7 @@
     <div class="container footer-inner">
       <div>
         <h3>Expressive English Academy</h3>
-        <p class="muted">Galeria publica sincronizada con las fotos mas recientes.</p>
+        <p class="muted">Galería pública sincronizada con las fotos más recientes.</p>
       </div>
       <div class="muted">&copy; <span id="year"></span> Expressive English Academy</div>
     </div>
@@ -347,7 +508,9 @@
       var siteNav = document.getElementById("siteNav");
       var year = document.getElementById("year");
 
-      if (year) year.textContent = new Date().getFullYear();
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
 
       if (navToggle && siteNav) {
         navToggle.addEventListener("click", function () {
@@ -373,16 +536,16 @@
     };
 
     const FALLBACK_IMAGES = [
-      { imageUrl: "foto1.jpg.jpeg", title: "Practica guiada", caption: "Conversaciones reales para fortalecer fluidez y confianza." },
-      { imageUrl: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompanamiento cercano." },
-      { imageUrl: "foto3.jpg.jpeg", title: "Expresion oral", caption: "Espacios seguros para hablar ingles desde el primer dia." },
-      { imageUrl: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma mas natural." },
-      { imageUrl: "foto10.jpg.png", title: "Motivacion que se nota", caption: "Cada sesion busca resultados visibles y experiencias memorables." },
-      { imageUrl: "foto11.jpg.png", title: "Aprendizaje con proposito", caption: "El ingles como herramienta para avanzar academica y laboralmente." },
-      { imageUrl: "foto12.jpg.png", title: "Acompanamiento constante", caption: "Retroalimentacion clara y practica adaptada al estudiante." },
-      { imageUrl: "foto13.jpg.jpg", title: "Interaccion autentica", caption: "Momentos que conectan el aula con situaciones reales." },
-      { imageUrl: "foto14.jpg.jpg", title: "Confianza en accion", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
-      { imageUrl: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en impacto humano y crecimiento real." }
+      { imageUrl: "foto1.jpg.jpeg", title: "Práctica guiada", caption: "Conversaciones reales para fortalecer la fluidez y la confianza." },
+      { imageUrl: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompañamiento cercano." },
+      { imageUrl: "foto3.jpg.jpeg", title: "Expresión oral", caption: "Espacios seguros para hablar inglés desde el primer día." },
+      { imageUrl: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma más natural." },
+      { imageUrl: "foto10.jpg.png", title: "Motivación que se nota", caption: "Cada sesión busca resultados visibles y experiencias memorables." },
+      { imageUrl: "foto11.jpg.png", title: "Aprendizaje con propósito", caption: "El inglés como herramienta para avanzar académica y laboralmente." },
+      { imageUrl: "foto12.jpg.png", title: "Acompañamiento constante", caption: "Retroalimentación clara y práctica adaptada al estudiante." },
+      { imageUrl: "foto13.jpg.jpg", title: "Interacción auténtica", caption: "Momentos que conectan el aula con situaciones reales." },
+      { imageUrl: "foto14.jpg.jpg", title: "Confianza en acción", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
+      { imageUrl: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en el impacto humano y el crecimiento real." }
     ];
 
     const app = initializeApp(firebaseConfig);
@@ -405,7 +568,7 @@
       galleryGrid.innerHTML = "";
 
       if (!images.length) {
-        galleryGrid.innerHTML = '<div class="muted">Todavia no hay fotos en la galeria.</div>';
+        galleryGrid.innerHTML = '<div class="muted">Todavía no hay fotos en la galería.</div>';
         return;
       }
 
@@ -418,7 +581,7 @@
 
         const photo = document.createElement("img");
         photo.src = image.imageUrl;
-        photo.alt = image.title || "Galeria Expressive English Academy";
+        photo.alt = image.title || "Galería Expressive English Academy";
 
         const copy = document.createElement("div");
         copy.className = "gallery-copy";
@@ -447,7 +610,7 @@
       if (!image) return;
 
       modalImage.src = image.imageUrl;
-      modalImage.alt = image.title || "Imagen de galeria";
+      modalImage.alt = image.title || "Imagen de galería";
       modalTitle.textContent = image.title || "Expressive English Academy";
       modalCaption.textContent = image.caption || "Experiencias reales de aprendizaje.";
       galleryModal.classList.add("active");
@@ -490,17 +653,17 @@
 
       if (cloudImages.length) {
         images = cloudImages;
-        galleryStatus.textContent = "Mostrando las fotos mas recientes.";
+        galleryStatus.textContent = "Mostrando las fotos más recientes.";
       } else {
         images = FALLBACK_IMAGES;
-        galleryStatus.textContent = "Mostrando galeria base.";
+        galleryStatus.textContent = "Mostrando la galería base.";
       }
 
       renderGallery();
     }, (error) => {
       console.error(error);
       images = FALLBACK_IMAGES;
-      galleryStatus.textContent = "No se pudo conectar a Firebase. Mostrando galeria base.";
+      galleryStatus.textContent = "No se pudo conectar a Firebase. Mostrando la galería base.";
       renderGallery();
     });
   </script>
