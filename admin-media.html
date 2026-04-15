@@ -394,10 +394,16 @@
   </script>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-   import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
-    import { getFirestore, collection, addDoc, deleteDoc, doc, getDocs, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-storage.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyAtq1_6eUVQwAIRGDoEVVzchjX5xn_ZTjk",
