@@ -5,36 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expressive English Academy | Admin Media</title>
   <meta name="theme-color" content="#081220">
+  <meta name="description" content="Panel admin para subir y eliminar fotos de la galeria de Expressive English Academy.">
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
 
     :root {
-      --bg: #07111e;
-      --bg-soft: #0d1f37;
-      --panel: rgba(10, 24, 45, 0.9);
-      --panel-strong: #102542;
-      --line: rgba(255, 255, 255, 0.12);
+      --line: rgba(255,255,255,0.12);
       --text: #f7fbff;
       --muted: #bfd0e6;
       --accent: #74e6ff;
       --accent-2: #ffd37b;
-      --success: #29d67a;
-      --danger: #ff8f8f;
+      --danger: #ffb4b4;
+      --shadow: 0 24px 60px rgba(0,0,0,0.28);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-pill: 999px;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -42,464 +32,222 @@
       font-family: "Manrope", sans-serif;
       line-height: 1.6;
       background:
-        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
+        radial-gradient(circle at top left, rgba(116,230,255,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,211,123,0.14), transparent 22%),
         linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 2rem));
-      margin: 0 auto;
-    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
 
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: rgba(5, 10, 18, 0.8);
+      position: sticky; top: 0; z-index: 80;
+      background: rgba(5,10,18,0.82);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
 
     .header-inner {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 14px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 14px 0;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
+      display: flex; align-items: center; gap: 14px; min-width: 0;
     }
 
     .brand-logo {
-      width: 58px;
-      height: 58px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.15);
+      width: 58px; height: 58px; object-fit: cover;
+      border-radius: 18px; border: 1px solid rgba(255,255,255,0.15);
       box-shadow: var(--shadow);
     }
 
     .brand-copy strong {
-      display: block;
-      font-family: "Sora", sans-serif;
-      font-size: 1rem;
-      line-height: 1.2;
+      display: block; font-family: "Sora", sans-serif; font-size: 1rem; line-height: 1.2;
     }
 
     .brand-copy span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
+      display: block; color: var(--muted); font-size: 0.9rem;
     }
 
     .nav-toggle {
-      display: none;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      padding: 10px 16px;
-      border-radius: var(--radius-pill);
-      font-weight: 800;
-      cursor: pointer;
+      display: none; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06); color: var(--text);
+      padding: 10px 16px; border-radius: var(--radius-pill);
+      font-weight: 800; cursor: pointer;
     }
 
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .main-nav { display: flex; align-items: center; gap: 10px; }
 
     .main-nav a {
-      padding: 10px 14px;
-      border-radius: var(--radius-pill);
-      color: var(--muted);
-      transition: 0.25s ease;
+      padding: 10px 14px; border-radius: var(--radius-pill);
+      color: var(--muted); transition: 0.25s ease;
     }
 
     .main-nav a:hover,
     .main-nav a.active {
-      color: var(--text);
-      background: rgba(255,255,255,0.08);
+      color: var(--text); background: rgba(255,255,255,0.08);
     }
 
     .main-nav .nav-cta {
-      color: #07111d;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #07111d; background: linear-gradient(135deg, var(--accent), var(--accent-2));
       font-weight: 900;
     }
 
     .hero {
-      padding: 76px 0 34px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      position: relative; overflow: hidden; padding: 88px 0 40px;
       background:
-        linear-gradient(125deg, rgba(4,10,18,0.8), rgba(4,10,18,0.5)),
+        linear-gradient(125deg, rgba(5,11,20,0.84), rgba(5,11,20,0.46)),
         url("foto13.jpg.jpg") center/cover no-repeat;
-      opacity: 0.32;
-      pointer-events: none;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: stretch;
+    .hero-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px; align-items: stretch;
     }
 
-    .hero-copy,
-    .hero-side,
-    .form-card,
-    .photo-card {
+    .card, .photo-card {
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
+      background: linear-gradient(180deg, rgba(16,37,66,0.9), rgba(7,14,26,0.94));
       box-shadow: var(--shadow);
     }
 
-    .hero-copy,
-    .hero-side,
-    .form-card {
-      padding: 28px;
-    }
+    .card { padding: 28px; }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-
-    h1, h2, h3 {
-      margin-top: 0;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 14px; border-radius: var(--radius-pill);
+      border: 1px solid var(--line); background: rgba(255,255,255,0.06);
+      color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;
+      font-size: 0.82rem; font-weight: 800;
     }
 
     .page-title {
-      margin: 18px 0 12px;
-      font-family: "Sora", sans-serif;
-      font-size: clamp(2.2rem, 4vw, 4.2rem);
-      line-height: 1.05;
-      max-width: 10ch;
+      margin: 18px 0 12px; font-family: "Sora", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: 1.05; max-width: 10ch;
     }
 
-    .lead {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 58ch;
-    }
+    .muted { color: var(--muted); }
 
-    .feature-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
+    .feature-list, .photo-grid {
+      display: grid; gap: 14px;
     }
 
     .feature-item {
-      padding: 16px 18px;
-      border-radius: 18px;
+      padding: 16px 18px; border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.05);
     }
 
     .feature-item strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-size: 1.05rem;
-    }
-
-    .section {
-      padding: 24px 0 64px;
-    }
-
-    .admin-grid {
-      display: grid;
-      grid-template-columns: 0.88fr 1.12fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .list {
-      display: grid;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .list span {
-      position: relative;
-      display: block;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .list span::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: block; color: var(--accent); margin-bottom: 4px;
     }
 
     .status-box {
-      margin-top: 18px;
-      padding: 14px 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(116, 230, 255, 0.18);
-      background: rgba(116, 230, 255, 0.08);
-      color: var(--text);
+      margin-top: 18px; padding: 14px 16px; border-radius: var(--radius-md);
+      border: 1px solid rgba(116,230,255,0.18);
+      background: rgba(116,230,255,0.08);
     }
 
-    .admin-panel {
-      display: none;
+    .section { padding: 24px 0 64px; }
+
+    .admin-grid {
+      display: grid; grid-template-columns: 0.92fr 1.08fr;
+      gap: 22px; align-items: start;
     }
 
-    .admin-panel.active {
-      display: block;
-    }
+    .panel { display: none; }
+    .panel.active { display: block; }
 
     .field {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 16px;
+      display: grid; gap: 8px; margin-bottom: 16px;
     }
 
-    .field label {
-      font-weight: 800;
-    }
+    .field label { font-weight: 800; }
 
     .field input,
     .field textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      outline: none;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: rgba(191, 208, 230, 0.8);
+      width: 100%; padding: 14px 16px; border-radius: var(--radius-md);
+      border: 1px solid var(--line); background: rgba(255,255,255,0.05);
+      color: var(--text); outline: none;
     }
 
     .field textarea {
-      min-height: 110px;
-      resize: vertical;
+      min-height: 110px; resize: vertical;
     }
 
-    .button-row,
-    .admin-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
+    .button-row {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;
     }
 
     .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border: 1px solid transparent;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-weight: 900;
-      transition: 0.25s ease;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 20px; border: 1px solid transparent;
+      border-radius: var(--radius-md); cursor: pointer;
+      font-weight: 900; transition: 0.25s ease;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
+    .button:hover { transform: translateY(-2px); }
 
     .button-primary {
-      color: #07111d;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+      color: #07111d; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 34px rgba(116,230,255,0.18);
     }
 
     .button-secondary {
-      background: rgba(255,255,255,0.07);
-      border-color: var(--line);
-      color: var(--text);
+      background: rgba(255,255,255,0.07); border-color: var(--line); color: var(--text);
     }
 
     .button-ghost {
-      background: transparent;
-      border-color: var(--line);
-      color: var(--muted);
+      background: transparent; border-color: var(--line); color: var(--muted);
     }
 
     .danger-button {
-      background: rgba(255, 143, 143, 0.1);
-      border-color: rgba(255, 143, 143, 0.22);
-      color: #ffd4d4;
-    }
-
-    .photo-grid {
-      display: grid;
-      gap: 16px;
-      margin-top: 18px;
+      background: rgba(255,180,180,0.1); border-color: rgba(255,180,180,0.18); color: var(--danger);
     }
 
     .photo-card {
-      display: grid;
-      grid-template-columns: 110px 1fr auto;
-      gap: 16px;
-      align-items: center;
-      padding: 14px;
+      display: grid; grid-template-columns: 110px 1fr auto;
+      gap: 16px; align-items: center; padding: 14px;
     }
 
     .photo-card img {
-      width: 110px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 14px;
-    }
-
-    .empty-state {
-      padding: 26px;
-      border-radius: var(--radius-lg);
-      border: 1px dashed var(--line);
-      background: rgba(255,255,255,0.03);
-      text-align: center;
-      color: var(--muted);
+      width: 110px; height: 90px; object-fit: cover; border-radius: 14px;
     }
 
     .footer {
-      padding: 30px 0 46px;
-      border-top: 1px solid var(--line);
+      padding: 30px 0 46px; border-top: 1px solid var(--line);
       background: rgba(255,255,255,0.02);
     }
 
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      padding: 10px 14px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    .small-note {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 12px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 20px; flex-wrap: wrap;
     }
 
     @media (max-width: 960px) {
       .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-flex; align-items: center; justify-content: center;
       }
 
       .main-nav {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        padding: 16px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
-        background: rgba(7, 13, 23, 0.98);
-        box-shadow: var(--shadow);
+        position: absolute; top: calc(100% + 10px); left: 0; right: 0;
+        display: none; flex-direction: column; align-items: stretch; gap: 8px;
+        padding: 16px; border-radius: 24px; border: 1px solid var(--line);
+        background: rgba(7,13,23,0.98); box-shadow: var(--shadow);
       }
 
-      .main-nav.open {
-        display: flex;
-      }
+      .main-nav.open { display: flex; }
 
-      .hero-inner,
+      .hero-grid,
       .admin-grid,
       .photo-card {
         grid-template-columns: 1fr;
-      }
-
-      .page-title {
-        max-width: 12ch;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 58px 0 24px;
-      }
-
-      .hero-copy,
-      .hero-side,
-      .form-card {
-        padding: 22px;
-      }
-
-      .brand-copy span {
-        font-size: 0.82rem;
       }
     }
   </style>
@@ -511,7 +259,7 @@
         <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
         <div class="brand-copy">
           <strong>Expressive English Academy</strong>
-          <span>Admin Media para actualizar tu galeria mas rapido.</span>
+          <span>Admin Media con actualizacion real para todos.</span>
         </div>
       </a>
 
@@ -529,46 +277,38 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
+      <div class="container hero-grid">
+        <div class="card">
           <span class="eyebrow">Admin Media</span>
-          <h1 class="page-title">Controla tus fotos sin tocar la galeria.</h1>
-          <p class="lead">
-            . Desde aqui puedes subir imagenes, ponerles titulo y descripcion, o eliminarlas.
+          <h1 class="page-title">Sube fotos que todos puedan ver al instante.</h1>
+          <p class="muted">
+            Esta version usa Firebase. Las fotos se suben a la nube y la galeria publica
+            se actualiza para cualquier persona que visite tu sitio.
           </p>
 
-          <div class="feature-list">
+          <div class="feature-list" style="margin-top:18px;">
             <div class="feature-item">
-              <strong>Subir foto</strong>
-              <span>Agrega nuevas imagenes en segundos desde este panel.</span>
+              <strong>Subida real</strong>
+              <span>Las fotos se guardan en Firebase Storage.</span>
             </div>
             <div class="feature-item">
-              <strong>Eliminar foto</strong>
-              <span>Quita fotos viejas sin editar HTML manualmente.</span>
+              <strong>Galeria en vivo</strong>
+              <span>Los datos se guardan en Firestore y la pagina publica escucha cambios en tiempo real.</span>
             </div>
             <div class="feature-item">
-              <strong>Cambio rapido</strong>
-              <span>Los cambios se guardan en este navegador con almacenamiento local.</span>
+              <strong>Solo admin</strong>
+              <span>Solo tu correo admin puede subir o eliminar.</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-side">
-          <h3>Importante</h3>
+        <div class="card">
+          <h3>Estado</h3>
           <p class="muted">
-            Este panel es ideal para una web estatica. Si despues quieres que las fotos se actualicen
-            para todos tus visitantes automaticamente, el siguiente paso es conectarlo a Firebase o Cloudinary.
+            Si ya publicaste reglas de Firestore y Storage, y creaste tu usuario en Authentication,
+            ya deberia funcionar.
           </p>
-
-          <div class="list">
-            <span>Cambia tu codigo dentro de este mismo archivo.</span>
-            <span>Las imagenes se guardan en el navegador actual.</span>
-            <span>La galeria puede leer las mismas fotos si usa la misma clave local.</span>
-          </div>
-
-          <div class="status-box" id="adminStatus">
-            Ingresa tu codigo para abrir el panel.
-          </div>
+          <div class="status-box" id="statusBox">Listo para iniciar sesion.</div>
         </div>
       </div>
     </section>
@@ -576,36 +316,35 @@
     <section class="section">
       <div class="container admin-grid">
         <div>
-          <div class="form-card admin-panel active" id="loginPanel">
-            <h2>Entrar como administrador</h2>
-            <p class="muted">Usa tu codigo privado para administrar las imagenes.</p>
+          <div class="card panel active" id="loginPanel">
+            <h2>Entrar como admin</h2>
+            <p class="muted">Usa tu correo y contrasena de Firebase Authentication.</p>
 
             <form id="loginForm">
               <div class="field">
-                <label for="adminPasscode">Codigo de acceso</label>
-                <input id="adminPasscode" type="password" placeholder="Escribe tu codigo">
+                <label for="adminEmail">Correo admin</label>
+                <input id="adminEmail" type="email" value="expressiveenglishacademy@gmail.com" required>
+              </div>
+
+              <div class="field">
+                <label for="adminPassword">Contrasena</label>
+                <input id="adminPassword" type="password" placeholder="Escribe tu contrasena" required>
               </div>
 
               <div class="button-row">
                 <button class="button button-primary" type="submit">Entrar</button>
               </div>
             </form>
-
-            <p class="small-note">
-              Recomendacion: cambia el codigo "8681" por el tuyo.
-            </p>
           </div>
 
-          <div class="form-card admin-panel" id="dashboardPanel">
+          <div class="card panel" id="dashboardPanel">
             <h2>Subir nueva foto</h2>
-            <p class="muted">
-              Agrega una imagen y se reflejara automaticamente en la galeria que use la misma clave local.
-            </p>
+            <p class="muted">Esta foto se sube a Firebase Storage y se agrega a Firestore.</p>
 
             <form id="uploadForm">
               <div class="field">
                 <label for="photoFile">Imagen</label>
-                <input id="photoFile" type="file" accept="image/*">
+                <input id="photoFile" type="file" accept="image/*" required>
               </div>
 
               <div class="field">
@@ -615,21 +354,21 @@
 
               <div class="field">
                 <label for="photoCaption">Descripcion</label>
-                <textarea id="photoCaption" placeholder="Escribe una breve descripcion de la foto"></textarea>
+                <textarea id="photoCaption" placeholder="Escribe una breve descripcion"></textarea>
               </div>
 
-              <div class="admin-actions">
+              <div class="button-row">
                 <button class="button button-primary" type="submit">Subir foto</button>
-                <button class="button button-secondary" type="button" id="logoutBtn">Cerrar panel</button>
-                <button class="button button-ghost" type="button" id="resetBtn">Restaurar galeria base</button>
+                <button class="button button-secondary" type="button" id="importBtn">Importar fotos actuales</button>
+                <button class="button button-ghost" type="button" id="logoutBtn">Cerrar sesion</button>
               </div>
             </form>
           </div>
         </div>
 
-        <div class="form-card">
+        <div class="card">
           <h2>Fotos actuales</h2>
-          <p class="muted">Elimina las imagenes que ya no quieras mostrar.</p>
+          <p class="muted">Elimina fotos y el cambio se refleja en la galeria publica.</p>
           <div class="photo-grid" id="photoGrid"></div>
         </div>
       </div>
@@ -640,230 +379,278 @@
     <div class="container footer-inner">
       <div>
         <h3>Expressive English Academy</h3>
-        <p class="muted">Admin Media simple, claro y mucho mas presentable.</p>
+        <p class="muted">Admin Media conectado a Firebase.</p>
       </div>
-
-      <div>
-        <div class="footer-links">
-          <a href="index.html">Inicio</a>
-          <a href="gallery.html">Galeria</a>
-          <a href="courses.html">Cursos</a>
-          <a href="donate.html">Apoya</a>
-        </div>
-        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
-      </div>
+      <div class="muted">&copy; <span id="year"></span> Expressive English Academy</div>
     </div>
   </footer>
 
   <script>
     (function () {
-      var STORAGE_KEY = "eea-gallery-images";
-      var ACCESS_KEY = "eea-admin-access";
-      var ADMIN_PASSCODE = "CHANGE-THIS-CODE";
-
-      var defaultGallery = [
-        { id: "default-1", src: "foto1.jpg.jpeg", title: "Practica guiada", caption: "Conversaciones reales para fortalecer fluidez y confianza." },
-        { id: "default-2", src: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompanamiento cercano." },
-        { id: "default-3", src: "foto3.jpg.jpeg", title: "Expresion oral", caption: "Espacios seguros para hablar ingles desde el primer dia." },
-        { id: "default-4", src: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma mas natural." },
-        { id: "default-5", src: "foto10.jpg.png", title: "Motivacion que se nota", caption: "Cada sesion busca resultados visibles y experiencias memorables." },
-        { id: "default-6", src: "foto11.jpg.png", title: "Aprendizaje con proposito", caption: "El ingles como herramienta para avanzar academica y laboralmente." },
-        { id: "default-7", src: "foto12.jpg.png", title: "Acompanamiento constante", caption: "Retroalimentacion clara y practica adaptada al estudiante." },
-        { id: "default-8", src: "foto13.jpg.jpg", title: "Interaccion autentica", caption: "Momentos que conectan el aula con situaciones reales." },
-        { id: "default-9", src: "foto14.jpg.jpg", title: "Confianza en accion", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
-        { id: "default-10", src: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en impacto humano y crecimiento real." }
-      ];
-
       var navToggle = document.getElementById("navToggle");
       var siteNav = document.getElementById("siteNav");
       var year = document.getElementById("year");
 
-      var loginPanel = document.getElementById("loginPanel");
-      var dashboardPanel = document.getElementById("dashboardPanel");
-      var loginForm = document.getElementById("loginForm");
-      var uploadForm = document.getElementById("uploadForm");
-      var passcodeInput = document.getElementById("adminPasscode");
-      var photoFile = document.getElementById("photoFile");
-      var photoTitle = document.getElementById("photoTitle");
-      var photoCaption = document.getElementById("photoCaption");
-      var photoGrid = document.getElementById("photoGrid");
-      var adminStatus = document.getElementById("adminStatus");
-      var logoutBtn = document.getElementById("logoutBtn");
-      var resetBtn = document.getElementById("resetBtn");
+      if (year) year.textContent = new Date().getFullYear();
 
-      function cloneDefaultGallery() {
-        return defaultGallery.map(function (item) {
-          return {
-            id: item.id + "-" + Math.random().toString(36).slice(2, 7),
-            src: item.src,
-            title: item.title,
-            caption: item.caption
-          };
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", function () {
+          var isOpen = siteNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
         });
       }
-
-      function getImages() {
-        try {
-          var raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return cloneDefaultGallery();
-          var parsed = JSON.parse(raw);
-          if (!Array.isArray(parsed) || !parsed.length) return cloneDefaultGallery();
-          return parsed;
-        } catch (error) {
-          return cloneDefaultGallery();
-        }
-      }
-
-      function saveImages(images) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(images));
-      }
-
-      function resetImages() {
-        var fresh = cloneDefaultGallery();
-        saveImages(fresh);
-        return fresh;
-      }
-
-      function setStatus(message) {
-        adminStatus.textContent = message;
-      }
-
-      function hasAccess() {
-        return sessionStorage.getItem(ACCESS_KEY) === "granted";
-      }
-
-      function showDashboard(isVisible) {
-        loginPanel.classList.toggle("active", !isVisible);
-        dashboardPanel.classList.toggle("active", isVisible);
-      }
-
-      function renderPhotos() {
-        var images = getImages();
-        photoGrid.innerHTML = "";
-
-        if (!images.length) {
-          photoGrid.innerHTML = '<div class="empty-state">No hay imagenes guardadas todavia.</div>';
-          return;
-        }
-
-        images.forEach(function (image) {
-          var card = document.createElement("article");
-          card.className = "photo-card";
-
-          var img = document.createElement("img");
-          img.src = image.src;
-          img.alt = image.title || "Imagen de galeria";
-
-          var copy = document.createElement("div");
-
-          var title = document.createElement("strong");
-          title.textContent = image.title || "Imagen sin titulo";
-
-          var caption = document.createElement("p");
-          caption.className = "muted";
-          caption.style.margin = "6px 0 0";
-          caption.textContent = image.caption || "Sin descripcion.";
-
-          copy.appendChild(title);
-          copy.appendChild(caption);
-
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "button danger-button";
-          btn.textContent = "Eliminar";
-          btn.addEventListener("click", function () {
-            var updated = getImages().filter(function (item) {
-              return item.id !== image.id;
-            });
-            saveImages(updated);
-            renderPhotos();
-            setStatus("Imagen eliminada correctamente.");
-          });
-
-          card.appendChild(img);
-          card.appendChild(copy);
-          card.appendChild(btn);
-          photoGrid.appendChild(card);
-        });
-      }
-
-      function initialize() {
-        if (year) {
-          year.textContent = new Date().getFullYear();
-        }
-
-        if (navToggle && siteNav) {
-          navToggle.addEventListener("click", function () {
-            var isOpen = siteNav.classList.toggle("open");
-            navToggle.setAttribute("aria-expanded", String(isOpen));
-          });
-        }
-
-        showDashboard(hasAccess());
-        renderPhotos();
-
-        if (hasAccess()) {
-          setStatus("Modo administrador activo. Ya puedes subir o eliminar fotos.");
-        }
-      }
-
-      loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        if (passcodeInput.value.trim() === ADMIN_PASSCODE) {
-          sessionStorage.setItem(ACCESS_KEY, "granted");
-          passcodeInput.value = "";
-          showDashboard(true);
-          renderPhotos();
-          setStatus("Acceso correcto. Ya puedes administrar tus fotos.");
-        } else {
-          setStatus("Codigo incorrecto. Cambia CHANGE-THIS-CODE dentro del archivo.");
-        }
-      });
-
-      uploadForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        var file = photoFile.files && photoFile.files[0];
-        if (!file) {
-          setStatus("Selecciona una imagen primero.");
-          return;
-        }
-
-        var reader = new FileReader();
-        reader.onload = function (loadEvent) {
-          var images = getImages();
-
-          images.unshift({
-            id: "custom-" + Date.now(),
-            src: loadEvent.target.result,
-            title: photoTitle.value.trim() || "Nuevo momento",
-            caption: photoCaption.value.trim() || "Galeria actualizada desde Admin Media."
-          });
-
-          saveImages(images);
-          uploadForm.reset();
-          renderPhotos();
-          setStatus("Imagen agregada con exito.");
-        };
-
-        reader.readAsDataURL(file);
-      });
-
-      logoutBtn.addEventListener("click", function () {
-        sessionStorage.removeItem(ACCESS_KEY);
-        showDashboard(false);
-        setStatus("Sesion cerrada.");
-      });
-
-      resetBtn.addEventListener("click", function () {
-        resetImages();
-        renderPhotos();
-        setStatus("La galeria volvio a sus imagenes base.");
-      });
-
-      initialize();
     })();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, deleteDoc, doc, getDocs, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAtq1_6eUVQwAIRGDoEVVzchjX5xn_ZTjk",
+      authDomain: "expressiveenglishacademy-4e382.firebaseapp.com",
+      projectId: "expressiveenglishacademy-4e382",
+      storageBucket: "expressiveenglishacademy-4e382.firebasestorage.app",
+      messagingSenderId: "889155322140",
+      appId: "1:889155322140:web:54ddf22815fcc50dad3ad9",
+      measurementId: "G-R73SW9GGZM"
+    };
+
+    const ADMIN_EMAIL = "expressiveenglishacademy@gmail.com";
+
+    const LEGACY_IMAGES = [
+      { imageUrl: "foto1.jpg.jpeg", title: "Practica guiada", caption: "Conversaciones reales para fortalecer fluidez y confianza." },
+      { imageUrl: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompanamiento cercano." },
+      { imageUrl: "foto3.jpg.jpeg", title: "Expresion oral", caption: "Espacios seguros para hablar ingles desde el primer dia." },
+      { imageUrl: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma mas natural." },
+      { imageUrl: "foto10.jpg.png", title: "Motivacion que se nota", caption: "Cada sesion busca resultados visibles y experiencias memorables." },
+      { imageUrl: "foto11.jpg.png", title: "Aprendizaje con proposito", caption: "El ingles como herramienta para avanzar academica y laboralmente." },
+      { imageUrl: "foto12.jpg.png", title: "Acompanamiento constante", caption: "Retroalimentacion clara y practica adaptada al estudiante." },
+      { imageUrl: "foto13.jpg.jpg", title: "Interaccion autentica", caption: "Momentos que conectan el aula con situaciones reales." },
+      { imageUrl: "foto14.jpg.jpg", title: "Confianza en accion", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
+      { imageUrl: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en impacto humano y crecimiento real." }
+    ];
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    const statusBox = document.getElementById("statusBox");
+    const loginPanel = document.getElementById("loginPanel");
+    const dashboardPanel = document.getElementById("dashboardPanel");
+    const loginForm = document.getElementById("loginForm");
+    const uploadForm = document.getElementById("uploadForm");
+    const importBtn = document.getElementById("importBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const photoGrid = document.getElementById("photoGrid");
+
+    function setStatus(message) {
+      statusBox.textContent = message;
+    }
+
+    function isAdmin(user) {
+      return !!user && !!user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+    }
+
+    function showDashboard(show) {
+      loginPanel.classList.toggle("active", !show);
+      dashboardPanel.classList.toggle("active", show);
+    }
+
+    function safeFileName(name) {
+      return name.replace(/[^a-zA-Z0-9._-]/g, "-");
+    }
+
+    function renderPhotos(items) {
+      photoGrid.innerHTML = "";
+
+      if (!items.length) {
+        photoGrid.innerHTML = '<div class="muted">Todavia no hay imagenes en Firestore. Puedes usar "Importar fotos actuales" o subir una nueva.</div>';
+        return;
+      }
+
+      items.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "photo-card";
+
+        const img = document.createElement("img");
+        img.src = item.imageUrl;
+        img.alt = item.title || "Imagen de galeria";
+
+        const copy = document.createElement("div");
+
+        const title = document.createElement("strong");
+        title.textContent = item.title || "Imagen sin titulo";
+
+        const caption = document.createElement("p");
+        caption.className = "muted";
+        caption.style.margin = "6px 0 0";
+        caption.textContent = item.caption || "Sin descripcion.";
+
+        copy.appendChild(title);
+        copy.appendChild(caption);
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "button danger-button";
+        removeBtn.textContent = "Eliminar";
+
+        removeBtn.addEventListener("click", async () => {
+          if (!isAdmin(auth.currentUser)) {
+            setStatus("Debes iniciar sesion como admin para borrar.");
+            return;
+          }
+
+          if (!confirm("Seguro que quieres eliminar esta foto?")) {
+            return;
+          }
+
+          try {
+            if (item.storagePath) {
+              await deleteObject(ref(storage, item.storagePath));
+            }
+            await deleteDoc(doc(db, "galleryImages", item.id));
+            setStatus("Foto eliminada correctamente.");
+          } catch (error) {
+            console.error(error);
+            setStatus("No se pudo eliminar la foto. Revisa reglas o conexion.");
+          }
+        });
+
+        card.appendChild(img);
+        card.appendChild(copy);
+        card.appendChild(removeBtn);
+        photoGrid.appendChild(card);
+      });
+    }
+
+    const galleryQuery = query(collection(db, "galleryImages"), orderBy("createdAt", "desc"));
+    onSnapshot(galleryQuery, (snapshot) => {
+      const items = snapshot.docs.map((entry) => ({
+        id: entry.id,
+        ...entry.data()
+      }));
+      renderPhotos(items);
+    }, (error) => {
+      console.error(error);
+      setStatus("No se pudo leer la galeria. Revisa Firebase config y reglas.");
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user && isAdmin(user)) {
+        showDashboard(true);
+        setStatus("Sesion admin activa. Ya puedes subir, importar y eliminar fotos.");
+      } else if (user && !isAdmin(user)) {
+        setStatus("Esta cuenta no esta autorizada como admin.");
+        await signOut(auth);
+        showDashboard(false);
+      } else {
+        showDashboard(false);
+      }
+    });
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("adminEmail").value.trim();
+      const password = document.getElementById("adminPassword").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        setStatus("Inicio de sesion correcto.");
+        loginForm.reset();
+        document.getElementById("adminEmail").value = ADMIN_EMAIL;
+      } catch (error) {
+        console.error(error);
+        setStatus("No se pudo iniciar sesion. Verifica correo, contrasena y Firebase Auth.");
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      setStatus("Sesion cerrada.");
+    });
+
+    importBtn.addEventListener("click", async () => {
+      if (!isAdmin(auth.currentUser)) {
+        setStatus("Debes iniciar sesion como admin para importar.");
+        return;
+      }
+
+      try {
+        const snapshot = await getDocs(collection(db, "galleryImages"));
+        const existingUrls = new Set(snapshot.docs.map((d) => d.data().imageUrl));
+        let added = 0;
+
+        for (const item of LEGACY_IMAGES) {
+          if (!existingUrls.has(item.imageUrl)) {
+            await addDoc(collection(db, "galleryImages"), {
+              imageUrl: item.imageUrl,
+              title: item.title,
+              caption: item.caption,
+              storagePath: "",
+              createdAt: Date.now() + added,
+              uploadedBy: "legacy-import"
+            });
+            added += 1;
+          }
+        }
+
+        setStatus(added ? "Fotos actuales importadas a Firestore." : "Las fotos actuales ya estaban importadas.");
+      } catch (error) {
+        console.error(error);
+        setStatus("No se pudieron importar las fotos actuales.");
+      }
+    });
+
+    uploadForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!isAdmin(auth.currentUser)) {
+        setStatus("Debes iniciar sesion como admin para subir fotos.");
+        return;
+      }
+
+      const fileInput = document.getElementById("photoFile");
+      const titleInput = document.getElementById("photoTitle");
+      const captionInput = document.getElementById("photoCaption");
+
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) {
+        setStatus("Selecciona una imagen primero.");
+        return;
+      }
+
+      try {
+        setStatus("Subiendo imagen...");
+        const filePath = "gallery/" + Date.now() + "-" + safeFileName(file.name);
+        const fileRef = ref(storage, filePath);
+
+        await uploadBytes(fileRef, file, {
+          contentType: file.type || "image/jpeg"
+        });
+
+        const downloadURL = await getDownloadURL(fileRef);
+
+        await addDoc(collection(db, "galleryImages"), {
+          imageUrl: downloadURL,
+          title: titleInput.value.trim() || "Nuevo momento",
+          caption: captionInput.value.trim() || "Galeria actualizada desde Admin Media.",
+          storagePath: filePath,
+          createdAt: Date.now(),
+          uploadedBy: auth.currentUser.email
+        });
+
+        uploadForm.reset();
+        setStatus("Foto subida correctamente. La galeria publica ya debe reflejarla.");
+      } catch (error) {
+        console.error(error);
+        setStatus("No se pudo subir la foto. Revisa Firebase config, Auth, Storage y reglas.");
+      }
+    });
   </script>
 </body>
 </html>
