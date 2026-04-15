@@ -3,10 +3,544 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Galeria de Expressive English Academy con experiencias reales de estudiantes practicando ingles.">
-  <meta name="theme-color" content="#081220">
   <title>Expressive English Academy | Galeria</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#081220">
+  <meta name="description" content="Galeria de Expressive English Academy con momentos reales de aprendizaje y crecimiento.">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+
+    :root {
+      --bg: #07111e;
+      --panel: rgba(10, 24, 45, 0.9);
+      --panel-2: rgba(16, 37, 66, 0.92);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f7fbff;
+      --muted: #bfd0e6;
+      --accent: #74e6ff;
+      --accent-2: #ffd37b;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
+        linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(5, 10, 18, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .main-nav .nav-cta {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 900;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 68px;
+      background:
+        linear-gradient(125deg, rgba(5, 11, 20, 0.84), rgba(5, 11, 20, 0.46)),
+        url("foto13.jpg.jpg") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(116, 230, 255, 0.22), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .gallery-card,
+    .footer-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy,
+    .hero-card {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .page-title {
+      margin: 18px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 4.3rem);
+      line-height: 1.05;
+      max-width: 11ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 58ch;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .button-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+    }
+
+    .gallery-card button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-copy {
+      padding: 18px;
+    }
+
+    .gallery-copy strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.04rem;
+    }
+
+    .empty-state {
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,0.03);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(4, 8, 14, 0.88);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(980px, 100%);
+      padding: 18px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(6, 13, 24, 0.97);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-card img {
+      width: 100%;
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      background: #030811;
+    }
+
+    .modal-close,
+    .modal-arrow {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .modal-close {
+      top: 14px;
+      right: 14px;
+    }
+
+    .modal-arrow.prev {
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+    }
+
+    .modal-arrow.next {
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+    }
+
+    .modal-copy {
+      padding: 16px 6px 6px;
+    }
+
+    .modal-copy strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #2ee17b, #16a055);
+      color: #04110a;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(37, 211, 102, 0.3);
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(7, 13, 23, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .hero-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 64px 0 50px;
+      }
+
+      .hero-copy,
+      .hero-card {
+        padding: 22px;
+      }
+
+      .page-title {
+        max-width: 13ch;
+      }
+
+      .gallery-card img {
+        height: 240px;
+      }
+
+      .brand-copy span {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -19,9 +553,9 @@
         </div>
       </a>
 
-      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
 
-      <nav class="main-nav" id="site-nav" data-nav>
+      <nav class="main-nav" id="siteNav">
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a href="courses.html">Cursos</a>
@@ -32,35 +566,36 @@
   </header>
 
   <main>
-    <section class="hero" style="--hero-image: url('foto13.jpg.jpg');">
+    <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <span class="eyebrow">Galeria viva</span>
-          <h1 class="page-title">Experiencias que muestran el impacto de aprender ingles.</h1>
-          <p class="page-lead">
-            Esta pagina ahora se ve mucho mejor en movil y, ademas, puede actualizarse desde el
-            panel Admin Media sin que tengas que volver a editar la galeria manualmente.
+          <h1 class="page-title">Momentos que muestran un ingles con impacto real.</h1>
+          <p class="lead">
+            Esta version carga el diseno dentro del mismo archivo, asi que ya no se te va a ver
+            como HTML simple. Tambien lee las fotos que subas desde tu pagina de Admin Media.
           </p>
+
           <div class="button-row">
             <a class="button button-primary" href="admin-media.html">Abrir Admin Media</a>
             <a class="button button-secondary" href="courses.html">Ver cursos</a>
           </div>
         </div>
 
-        <div class="panel">
-          <h3>Como funciona tu nueva galeria</h3>
-          <div class="metric-list">
-            <div class="metric-item">
+        <div class="hero-card">
+          <h3>Como funciona</h3>
+          <div class="feature-list">
+            <div class="feature-item">
               <strong>Subir foto</strong>
-              <span>Desde Admin Media puedes cargar una imagen nueva con titulo y descripcion.</span>
+              <span>Las imagenes nuevas aparecen aqui si las agregas desde Admin Media.</span>
             </div>
-            <div class="metric-item">
+            <div class="feature-item">
               <strong>Eliminar foto</strong>
-              <span>Tambien puedes quitar imagenes sin tocar el codigo de la galeria.</span>
+              <span>Si borras una imagen desde Admin Media tambien desaparece aqui.</span>
             </div>
-            <div class="metric-item">
-              <strong>Actualizacion local inmediata</strong>
-              <span>Los cambios se reflejan de inmediato en este navegador.</span>
+            <div class="feature-item">
+              <strong>Vista moderna</strong>
+              <span>Galeria limpia, ligera, responsive y con modal elegante para celular y desktop.</span>
             </div>
           </div>
         </div>
@@ -72,41 +607,39 @@
         <div class="section-heading">
           <h2>Nuestros estudiantes practicando con hablantes nativos</h2>
           <p>
-            Un layout mas limpio, respirado y moderno para que las fotos se vean mejor y el sitio
-            transmita mas confianza desde el primer vistazo.
+            Experiencias reales que fortalecen la confianza, la fluidez y la motivacion de seguir creciendo.
           </p>
         </div>
 
-        <div class="gallery-toolbar">
-          <p class="muted" data-gallery-status>La galeria esta cargando.</p>
+        <div class="toolbar">
+          <p class="muted" id="galleryStatus">Cargando galeria...</p>
           <a class="button button-ghost" href="admin-media.html">Administrar fotos</a>
         </div>
 
-        <div class="gallery-grid" data-gallery-grid></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </section>
   </main>
 
-  <div class="modal" data-gallery-modal aria-hidden="true">
+  <div class="modal" id="galleryModal" aria-hidden="true">
     <div class="modal-card">
-      <button class="modal-close" type="button" data-gallery-close aria-label="Cerrar">X</button>
-      <button class="modal-arrow prev" type="button" data-gallery-prev aria-label="Anterior">&#10094;</button>
-      <button class="modal-arrow next" type="button" data-gallery-next aria-label="Siguiente">&#10095;</button>
-      <img data-gallery-image src="" alt="">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Cerrar">X</button>
+      <button class="modal-arrow prev" type="button" id="modalPrev" aria-label="Anterior">&#10094;</button>
+      <button class="modal-arrow next" type="button" id="modalNext" aria-label="Siguiente">&#10095;</button>
+      <img id="modalImage" src="" alt="">
       <div class="modal-copy">
-        <strong data-gallery-title></strong>
-        <span class="muted" data-gallery-caption></span>
+        <strong id="modalTitle"></strong>
+        <span class="muted" id="modalCaption"></span>
       </div>
     </div>
   </div>
 
   <footer class="footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div>
-        <h3>Galeria Expressive English Academy</h3>
-        <p class="footer-note">
-          Esta pagina ya queda preparada para que agregues o elimines imagenes desde un panel
-          sencillo, sin tener que editar la lista de fotos dentro de la galeria.
+        <h3>Expressive English Academy</h3>
+        <p class="muted">
+          Una galeria mas moderna, mas limpia y lista para acompanar el crecimiento de tu academia.
         </p>
       </div>
 
@@ -117,7 +650,7 @@
           <a href="courses.html">Cursos</a>
           <a href="admin-media.html">Admin Media</a>
         </div>
-        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
@@ -131,6 +664,168 @@
     WhatsApp
   </a>
 
-  <script src="main.js"></script>
+  <script>
+    (function () {
+      var STORAGE_KEY = "eea-gallery-images";
+
+      var defaultGallery = [
+        { id: "default-1", src: "foto1.jpg.jpeg", title: "Practica guiada", caption: "Conversaciones reales para fortalecer fluidez y confianza." },
+        { id: "default-2", src: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompanamiento cercano." },
+        { id: "default-3", src: "foto3.jpg.jpeg", title: "Expresion oral", caption: "Espacios seguros para hablar ingles desde el primer dia." },
+        { id: "default-4", src: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma mas natural." },
+        { id: "default-5", src: "foto10.jpg.png", title: "Motivacion que se nota", caption: "Cada sesion busca resultados visibles y experiencias memorables." },
+        { id: "default-6", src: "foto11.jpg.png", title: "Aprendizaje con proposito", caption: "El ingles como herramienta para avanzar academica y laboralmente." },
+        { id: "default-7", src: "foto12.jpg.png", title: "Acompanamiento constante", caption: "Retroalimentacion clara y practica adaptada al estudiante." },
+        { id: "default-8", src: "foto13.jpg.jpg", title: "Interaccion autentica", caption: "Momentos que conectan el aula con situaciones reales." },
+        { id: "default-9", src: "foto14.jpg.jpg", title: "Confianza en accion", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
+        { id: "default-10", src: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en impacto humano y crecimiento real." }
+      ];
+
+      var navToggle = document.getElementById("navToggle");
+      var siteNav = document.getElementById("siteNav");
+      var year = document.getElementById("year");
+
+      var galleryGrid = document.getElementById("galleryGrid");
+      var galleryStatus = document.getElementById("galleryStatus");
+
+      var galleryModal = document.getElementById("galleryModal");
+      var modalImage = document.getElementById("modalImage");
+      var modalTitle = document.getElementById("modalTitle");
+      var modalCaption = document.getElementById("modalCaption");
+      var modalClose = document.getElementById("modalClose");
+      var modalPrev = document.getElementById("modalPrev");
+      var modalNext = document.getElementById("modalNext");
+
+      var images = getImages();
+      var currentIndex = 0;
+
+      function cloneDefaultGallery() {
+        return defaultGallery.map(function (item) {
+          return {
+            id: item.id + "-" + Math.random().toString(36).slice(2, 7),
+            src: item.src,
+            title: item.title,
+            caption: item.caption
+          };
+        });
+      }
+
+      function getImages() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return cloneDefaultGallery();
+          var parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed) || !parsed.length) return cloneDefaultGallery();
+          return parsed;
+        } catch (error) {
+          return cloneDefaultGallery();
+        }
+      }
+
+      function renderGallery() {
+        galleryGrid.innerHTML = "";
+        images = getImages();
+
+        if (!images.length) {
+          galleryGrid.innerHTML = '<div class="empty-state">Todavia no hay imagenes disponibles.</div>';
+          galleryStatus.textContent = "La galeria esta vacia por ahora.";
+          return;
+        }
+
+        images.forEach(function (image, index) {
+          var card = document.createElement("article");
+          card.className = "gallery-card";
+
+          var button = document.createElement("button");
+          button.type = "button";
+
+          var photo = document.createElement("img");
+          photo.src = image.src;
+          photo.alt = image.title || "Galeria Expressive English Academy";
+
+          var copy = document.createElement("div");
+          copy.className = "gallery-copy";
+
+          var title = document.createElement("strong");
+          title.textContent = image.title || "Momento Expressive English Academy";
+
+          var caption = document.createElement("span");
+          caption.className = "muted";
+          caption.textContent = image.caption || "Experiencias reales de nuestros estudiantes.";
+
+          copy.appendChild(title);
+          copy.appendChild(caption);
+          button.appendChild(photo);
+          button.appendChild(copy);
+          card.appendChild(button);
+          galleryGrid.appendChild(card);
+
+          button.addEventListener("click", function () {
+            openModal(index);
+          });
+        });
+
+        galleryStatus.textContent = "Galeria lista. Si cambias fotos desde Admin Media, se reflejan aqui en este navegador.";
+      }
+
+      function openModal(index) {
+        currentIndex = index;
+        var image = images[currentIndex];
+        if (!image) return;
+
+        modalImage.src = image.src;
+        modalImage.alt = image.title || "Imagen de galeria";
+        modalTitle.textContent = image.title || "Expressive English Academy";
+        modalCaption.textContent = image.caption || "Experiencias reales de aprendizaje.";
+
+        galleryModal.classList.add("active");
+        galleryModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        galleryModal.classList.remove("active");
+        galleryModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      function step(direction) {
+        if (!images.length) return;
+        currentIndex = (currentIndex + direction + images.length) % images.length;
+        openModal(currentIndex);
+      }
+
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", function () {
+          var isOpen = siteNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      modalClose.addEventListener("click", closeModal);
+      modalPrev.addEventListener("click", function () { step(-1); });
+      modalNext.addEventListener("click", function () { step(1); });
+
+      galleryModal.addEventListener("click", function (event) {
+        if (event.target === galleryModal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!galleryModal.classList.contains("active")) return;
+
+        if (event.key === "Escape") closeModal();
+        if (event.key === "ArrowLeft") step(-1);
+        if (event.key === "ArrowRight") step(1);
+      });
+
+      renderGallery();
+    })();
+  </script>
 </body>
 </html>
