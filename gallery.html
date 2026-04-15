@@ -1,208 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Galería - Expressive English Academy</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1f44;
-      color: white;
-    }
-
-    header {
-      background: #081633;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #00c3ff;
-    }
-
-    .title {
-      text-align: center;
-      padding: 30px 20px 10px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal img {
-      max-width: 80%;
-      border-radius: 10px;
-    }
-
-    .close, .prev, .next {
-      position: absolute;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      padding: 10px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-    }
-
-    .close {
-      top: 20px;
-      right: 30px;
-    }
-
-    .prev {
-      top: 50%;
-      left: 30px;
-      transform: translateY(-50%);
-    }
-
-    .next {
-      top: 50%;
-      right: 30px;
-      transform: translateY(-50%);
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel simple para subir y eliminar fotos de la galeria de Expressive English Academy.">
+  <meta name="theme-color" content="#081220">
+  <title>Expressive English Academy | Admin Media</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="foto8.jpg.jpg" alt="Logo de Expressive English Academy">
+        <div class="brand-copy">
+          <strong>Expressive English Academy</strong>
+          <span>Admin Media para actualizar tu galeria mas rapido.</span>
+        </div>
+      </a>
 
-<header>
-  <h1>Expressive English Academy</h1>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Nosotros</a>
-    <a href="courses.html">Cursos</a>
-    <a href="gallery.html">Galería</a>
-    <a href="donate.html">❤️ Apoya</a>
-  </nav>
+      <nav class="main-nav" id="site-nav" data-nav>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Nosotros</a>
+        <a href="courses.html">Cursos</a>
+        <a href="gallery.html">Galeria</a>
+        <a class="nav-cta active" href="admin-media.html">Admin Media</a>
+      </nav>
+    </div>
+  </header>
 
-  <img src="foto8.jpg.jpg" width="80">
-</header>
+  <main class="section">
+    <div class="container admin-grid">
+      <aside class="form-card">
+        <div class="admin-lock">Admin Media</div>
+        <h3>Panel simple para tus fotos</h3>
+        <p>
+          Desde aqui puedes subir imagenes nuevas, agregar un titulo, escribir una pequena
+          descripcion y eliminar fotos de la galeria cuando lo necesites.
+        </p>
+        <div class="list">
+          <span>Cambia el codigo de acceso dentro de <strong>admin-media.js</strong>.</span>
+          <span>Las fotos se guardan en este navegador usando almacenamiento local.</span>
+          <span>Si luego quieres actualizacion en vivo para todos los visitantes, el siguiente paso es Firebase o Cloudinary.</span>
+        </div>
+        <div class="status-box" data-admin-status>Ingresa tu codigo para abrir el panel.</div>
+      </aside>
 
-<div class="title">
-  <h2>Nuestros estudiantes practicando con hablantes nativos</h2>
-  <p>Experiencias reales que fortalecen la confianza y fluidez.</p>
-</div>
+      <section>
+        <div class="form-card admin-panel active" data-admin-login>
+          <h3>Entrar como administrador</h3>
+          <p>Usa tu codigo privado para administrar las imagenes.</p>
+          <form data-admin-form>
+            <div class="field">
+              <label for="admin-passcode">Codigo de acceso</label>
+              <input id="admin-passcode" data-admin-passcode type="password" placeholder="Escribe tu codigo">
+            </div>
+            <button class="button button-primary" type="submit">Entrar</button>
+          </form>
+          <p class="small-note">
+            Importante: este panel es practico para una web estatica, pero no es seguridad real de servidor.
+          </p>
+        </div>
 
-<div class="gallery">
-  <img src="foto1.jpg.jpeg" onclick="openModal(0)">
-  <img src="foto2.jpg.jpeg" onclick="openModal(1)">
-  <img src="foto3.jpg.jpeg" onclick="openModal(2)">
-  <img src="foto4.jpg.jpeg" onclick="openModal(3)">
-  <img src="foto10.jpg.png" onclick="openModal(4)">
-  <img src="foto11.jpg.png" onclick="openModal(5)">
-  <img src="foto12.jpg.png" onclick="openModal(6)">
-  <img src="foto13.jpg.jpg" onclick="openModal(7)">
-  <img src="foto14.jpg.jpg" onclick="openModal(8)">
-  <img src="foto15.jpg.jpg" onclick="openModal(9)">
-</div>
+        <div class="admin-panel" data-admin-dashboard>
+          <div class="form-card">
+            <h3>Subir nueva foto</h3>
+            <p>Agrega una imagen y se reflejara automaticamente en la pagina de galeria en este navegador.</p>
+            <form data-upload-form>
+              <div class="field">
+                <label for="photo-file">Imagen</label>
+                <input id="photo-file" data-upload-file type="file" accept="image/*">
+              </div>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <span class="close" onclick="closeModal()">✖</span>
-  <span class="prev" onclick="changeSlide(-1)">❮</span>
-  <img id="modalImg">
-  <span class="next" onclick="changeSlide(1)">❯</span>
-</div>
+              <div class="field">
+                <label for="photo-title">Titulo</label>
+                <input id="photo-title" data-upload-title type="text" placeholder="Ejemplo: Clase interactiva">
+              </div>
 
-<script>
-  let images = [
-    "foto1.jpg.jpeg",
-    "foto2.jpg.jpeg",
-    "foto3.jpg.jpeg",
-    "foto4.jpg.jpeg",
-    "foto10.jpg.png",
-    "foto11.jpg.png",
-    "foto12.jpg.png",
-    "foto13.jpg.jpg",
-    "foto14.jpg.jpg",
-    "foto15.jpg.jpg"
-  ];
+              <div class="field">
+                <label for="photo-caption">Descripcion</label>
+                <textarea id="photo-caption" data-upload-caption placeholder="Escribe una breve descripcion de la foto"></textarea>
+              </div>
 
-  let currentIndex = 0;
+              <div class="admin-actions">
+                <button class="button button-primary" type="submit">Subir foto</button>
+                <button class="button button-secondary" type="button" data-admin-logout>Cerrar panel</button>
+                <button class="button button-ghost" type="button" data-admin-reset>Restaurar galeria base</button>
+              </div>
+            </form>
+          </div>
 
-  function openModal(index) {
-    currentIndex = index;
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modalImg").src = images[currentIndex];
-  }
+          <div class="form-card" style="margin-top: 20px;">
+            <h3>Fotos actuales</h3>
+            <p>Elimina las imagenes que ya no quieras mostrar.</p>
+            <div class="admin-photo-grid" data-admin-photo-grid></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Admin Media</h3>
+        <p class="footer-note">
+          Esta version ya te evita editar manualmente la lista de fotos dentro de la pagina de galeria.
+        </p>
+      </div>
 
-  function changeSlide(direction) {
-    currentIndex += direction;
-
-    if (currentIndex < 0) {
-      currentIndex = images.length - 1;
-    }
-
-    if (currentIndex >= images.length) {
-      currentIndex = 0;
-    }
-
-    document.getElementById("modalImg").src = images[currentIndex];
-  }
-</script>
-
-<!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/50582581434?text=Hola%20quiero%20información%20sobre%20los%20cursos%20y%20también%20cómo%20puedo%20apoyar%20con%20donaciones" 
-   target="_blank" 
-   style="
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: #25D366;
-   color: white;
-   padding: 15px 20px;
-   border-radius: 50px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-   z-index: 1000;
-   ">
-   💬 WhatsApp
-</a>
-
-</body>
-</html>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="gallery.html">Galeria</a>
+          <a href="courses.html">Cursos</a>
+          <a href="donate.html">Apoya</a>
+        </div>
+        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+      </div>
+    </div>
+  </footer>
