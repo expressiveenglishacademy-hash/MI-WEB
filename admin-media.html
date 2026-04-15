@@ -3,10 +3,506 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Panel simple para subir y eliminar fotos de la galeria de Expressive English Academy.">
-  <meta name="theme-color" content="#081220">
   <title>Expressive English Academy | Admin Media</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#081220">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
+
+    :root {
+      --bg: #07111e;
+      --bg-soft: #0d1f37;
+      --panel: rgba(10, 24, 45, 0.9);
+      --panel-strong: #102542;
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f7fbff;
+      --muted: #bfd0e6;
+      --accent: #74e6ff;
+      --accent-2: #ffd37b;
+      --success: #29d67a;
+      --danger: #ff8f8f;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(116, 230, 255, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 211, 123, 0.14), transparent 22%),
+        linear-gradient(180deg, #081220 0%, #07101a 55%, #050b13 100%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(5, 10, 18, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-nav a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .main-nav .nav-cta {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 900;
+    }
+
+    .hero {
+      padding: 76px 0 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(125deg, rgba(4,10,18,0.8), rgba(4,10,18,0.5)),
+        url("foto13.jpg.jpg") center/cover no-repeat;
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .form-card,
+    .photo-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(16, 37, 66, 0.9), rgba(7, 14, 26, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy,
+    .hero-side,
+    .form-card {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    .page-title {
+      margin: 18px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
+      line-height: 1.05;
+      max-width: 10ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 58ch;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .feature-item strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 24px 0 64px;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .list span {
+      position: relative;
+      display: block;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .status-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(116, 230, 255, 0.18);
+      background: rgba(116, 230, 255, 0.08);
+      color: var(--text);
+    }
+
+    .admin-panel {
+      display: none;
+    }
+
+    .admin-panel.active {
+      display: block;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      font-weight: 800;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      outline: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(191, 208, 230, 0.8);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .button-row,
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 34px rgba(116, 230, 255, 0.18);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .button-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .danger-button {
+      background: rgba(255, 143, 143, 0.1);
+      border-color: rgba(255, 143, 143, 0.22);
+      color: #ffd4d4;
+    }
+
+    .photo-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .photo-card {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
+    }
+
+    .photo-card img {
+      width: 110px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .empty-state {
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,0.03);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: rgba(7, 13, 23, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .hero-inner,
+      .admin-grid,
+      .photo-card {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        max-width: 12ch;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 58px 0 24px;
+      }
+
+      .hero-copy,
+      .hero-side,
+      .form-card {
+        padding: 22px;
+      }
+
+      .brand-copy span {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -19,9 +515,9 @@
         </div>
       </a>
 
-      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
 
-      <nav class="main-nav" id="site-nav" data-nav>
+      <nav class="main-nav" id="siteNav">
         <a href="index.html">Inicio</a>
         <a href="about.html">Nosotros</a>
         <a href="courses.html">Cursos</a>
@@ -31,84 +527,121 @@
     </div>
   </header>
 
-  <main class="section">
-    <div class="container admin-grid">
-      <aside class="form-card">
-        <div class="admin-lock">Admin Media</div>
-        <h3>Panel simple para tus fotos</h3>
-        <p>
-          Desde aqui puedes subir imagenes nuevas, agregar un titulo, escribir una pequena
-          descripcion y eliminar fotos de la galeria cuando lo necesites.
-        </p>
-        <div class="list">
-          <span>Cambia el codigo de acceso dentro de <strong>admin-media.js</strong>.</span>
-          <span>Las fotos se guardan en este navegador usando almacenamiento local.</span>
-          <span>Si luego quieres actualizacion en vivo para todos los visitantes, el siguiente paso es Firebase o Cloudinary.</span>
-        </div>
-        <div class="status-box" data-admin-status>Ingresa tu codigo para abrir el panel.</div>
-      </aside>
-
-      <section>
-        <div class="form-card admin-panel active" data-admin-login>
-          <h3>Entrar como administrador</h3>
-          <p>Usa tu codigo privado para administrar las imagenes.</p>
-          <form data-admin-form>
-            <div class="field">
-              <label for="admin-passcode">Codigo de acceso</label>
-              <input id="admin-passcode" data-admin-passcode type="password" placeholder="Escribe tu codigo">
-            </div>
-            <button class="button button-primary" type="submit">Entrar</button>
-          </form>
-          <p class="small-note">
-            Importante: este panel es practico para una web estatica, pero no es seguridad real de servidor.
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Admin Media</span>
+          <h1 class="page-title">Controla tus fotos sin tocar la galeria.</h1>
+          <p class="lead">
+            Esta version si viene completa dentro del mismo archivo para que no vuelva a romperse
+            el diseno. Desde aqui puedes subir imagenes, ponerles titulo y descripcion, o eliminarlas.
           </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Subir foto</strong>
+              <span>Agrega nuevas imagenes en segundos desde este panel.</span>
+            </div>
+            <div class="feature-item">
+              <strong>Eliminar foto</strong>
+              <span>Quita fotos viejas sin editar HTML manualmente.</span>
+            </div>
+            <div class="feature-item">
+              <strong>Cambio rapido</strong>
+              <span>Los cambios se guardan en este navegador con almacenamiento local.</span>
+            </div>
+          </div>
         </div>
 
-        <div class="admin-panel" data-admin-dashboard>
-          <div class="form-card">
-            <h3>Subir nueva foto</h3>
-            <p>Agrega una imagen y se reflejara automaticamente en la pagina de galeria en este navegador.</p>
-            <form data-upload-form>
+        <div class="hero-side">
+          <h3>Importante</h3>
+          <p class="muted">
+            Este panel es ideal para una web estatica. Si despues quieres que las fotos se actualicen
+            para todos tus visitantes automaticamente, el siguiente paso es conectarlo a Firebase o Cloudinary.
+          </p>
+
+          <div class="list">
+            <span>Cambia tu codigo dentro de este mismo archivo.</span>
+            <span>Las imagenes se guardan en el navegador actual.</span>
+            <span>La galeria puede leer las mismas fotos si usa la misma clave local.</span>
+          </div>
+
+          <div class="status-box" id="adminStatus">
+            Ingresa tu codigo para abrir el panel.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container admin-grid">
+        <div>
+          <div class="form-card admin-panel active" id="loginPanel">
+            <h2>Entrar como administrador</h2>
+            <p class="muted">Usa tu codigo privado para administrar las imagenes.</p>
+
+            <form id="loginForm">
               <div class="field">
-                <label for="photo-file">Imagen</label>
-                <input id="photo-file" data-upload-file type="file" accept="image/*">
+                <label for="adminPasscode">Codigo de acceso</label>
+                <input id="adminPasscode" type="password" placeholder="Escribe tu codigo">
+              </div>
+
+              <div class="button-row">
+                <button class="button button-primary" type="submit">Entrar</button>
+              </div>
+            </form>
+
+            <p class="small-note">
+              Recomendacion: cambia el codigo "CHANGE-THIS-CODE" por el tuyo.
+            </p>
+          </div>
+
+          <div class="form-card admin-panel" id="dashboardPanel">
+            <h2>Subir nueva foto</h2>
+            <p class="muted">
+              Agrega una imagen y se reflejara automaticamente en la galeria que use la misma clave local.
+            </p>
+
+            <form id="uploadForm">
+              <div class="field">
+                <label for="photoFile">Imagen</label>
+                <input id="photoFile" type="file" accept="image/*">
               </div>
 
               <div class="field">
-                <label for="photo-title">Titulo</label>
-                <input id="photo-title" data-upload-title type="text" placeholder="Ejemplo: Clase interactiva">
+                <label for="photoTitle">Titulo</label>
+                <input id="photoTitle" type="text" placeholder="Ejemplo: Clase interactiva">
               </div>
 
               <div class="field">
-                <label for="photo-caption">Descripcion</label>
-                <textarea id="photo-caption" data-upload-caption placeholder="Escribe una breve descripcion de la foto"></textarea>
+                <label for="photoCaption">Descripcion</label>
+                <textarea id="photoCaption" placeholder="Escribe una breve descripcion de la foto"></textarea>
               </div>
 
               <div class="admin-actions">
                 <button class="button button-primary" type="submit">Subir foto</button>
-                <button class="button button-secondary" type="button" data-admin-logout>Cerrar panel</button>
-                <button class="button button-ghost" type="button" data-admin-reset>Restaurar galeria base</button>
+                <button class="button button-secondary" type="button" id="logoutBtn">Cerrar panel</button>
+                <button class="button button-ghost" type="button" id="resetBtn">Restaurar galeria base</button>
               </div>
             </form>
           </div>
-
-          <div class="form-card" style="margin-top: 20px;">
-            <h3>Fotos actuales</h3>
-            <p>Elimina las imagenes que ya no quieras mostrar.</p>
-            <div class="admin-photo-grid" data-admin-photo-grid></div>
-          </div>
         </div>
-      </section>
-    </div>
+
+        <div class="form-card">
+          <h2>Fotos actuales</h2>
+          <p class="muted">Elimina las imagenes que ya no quieras mostrar.</p>
+          <div class="photo-grid" id="photoGrid"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div>
-        <h3>Admin Media</h3>
-        <p class="footer-note">
-          Esta version ya te evita editar manualmente la lista de fotos dentro de la pagina de galeria.
-        </p>
+        <h3>Expressive English Academy</h3>
+        <p class="muted">Admin Media simple, claro y mucho mas presentable.</p>
       </div>
 
       <div>
@@ -118,12 +651,220 @@
           <a href="courses.html">Cursos</a>
           <a href="donate.html">Apoya</a>
         </div>
-        <p class="muted" style="margin-top: 16px;">&copy; <span data-year></span> Expressive English Academy</p>
+        <p class="muted" style="margin-top: 14px;">&copy; <span id="year"></span> Expressive English Academy</p>
       </div>
     </div>
   </footer>
 
-  <script src="main.js"></script>
-  <script src="admin-media.js"></script>
+  <script>
+    (function () {
+      var STORAGE_KEY = "eea-gallery-images";
+      var ACCESS_KEY = "eea-admin-access";
+      var ADMIN_PASSCODE = "CHANGE-THIS-CODE";
+
+      var defaultGallery = [
+        { id: "default-1", src: "foto1.jpg.jpeg", title: "Practica guiada", caption: "Conversaciones reales para fortalecer fluidez y confianza." },
+        { id: "default-2", src: "foto2.jpg.jpeg", title: "Clase participativa", caption: "Aprendizaje activo con acompanamiento cercano." },
+        { id: "default-3", src: "foto3.jpg.jpeg", title: "Expresion oral", caption: "Espacios seguros para hablar ingles desde el primer dia." },
+        { id: "default-4", src: "foto4.jpg.jpeg", title: "Trabajo en equipo", caption: "Actividades colaborativas que vuelven el idioma mas natural." },
+        { id: "default-5", src: "foto10.jpg.png", title: "Motivacion que se nota", caption: "Cada sesion busca resultados visibles y experiencias memorables." },
+        { id: "default-6", src: "foto11.jpg.png", title: "Aprendizaje con proposito", caption: "El ingles como herramienta para avanzar academica y laboralmente." },
+        { id: "default-7", src: "foto12.jpg.png", title: "Acompanamiento constante", caption: "Retroalimentacion clara y practica adaptada al estudiante." },
+        { id: "default-8", src: "foto13.jpg.jpg", title: "Interaccion autentica", caption: "Momentos que conectan el aula con situaciones reales." },
+        { id: "default-9", src: "foto14.jpg.jpg", title: "Confianza en accion", caption: "Estudiantes dando pasos firmes hacia nuevas oportunidades." },
+        { id: "default-10", src: "foto15.jpg.jpg", title: "Comunidad que crece", caption: "Una academia enfocada en impacto humano y crecimiento real." }
+      ];
+
+      var navToggle = document.getElementById("navToggle");
+      var siteNav = document.getElementById("siteNav");
+      var year = document.getElementById("year");
+
+      var loginPanel = document.getElementById("loginPanel");
+      var dashboardPanel = document.getElementById("dashboardPanel");
+      var loginForm = document.getElementById("loginForm");
+      var uploadForm = document.getElementById("uploadForm");
+      var passcodeInput = document.getElementById("adminPasscode");
+      var photoFile = document.getElementById("photoFile");
+      var photoTitle = document.getElementById("photoTitle");
+      var photoCaption = document.getElementById("photoCaption");
+      var photoGrid = document.getElementById("photoGrid");
+      var adminStatus = document.getElementById("adminStatus");
+      var logoutBtn = document.getElementById("logoutBtn");
+      var resetBtn = document.getElementById("resetBtn");
+
+      function cloneDefaultGallery() {
+        return defaultGallery.map(function (item) {
+          return {
+            id: item.id + "-" + Math.random().toString(36).slice(2, 7),
+            src: item.src,
+            title: item.title,
+            caption: item.caption
+          };
+        });
+      }
+
+      function getImages() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return cloneDefaultGallery();
+          var parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed) || !parsed.length) return cloneDefaultGallery();
+          return parsed;
+        } catch (error) {
+          return cloneDefaultGallery();
+        }
+      }
+
+      function saveImages(images) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(images));
+      }
+
+      function resetImages() {
+        var fresh = cloneDefaultGallery();
+        saveImages(fresh);
+        return fresh;
+      }
+
+      function setStatus(message) {
+        adminStatus.textContent = message;
+      }
+
+      function hasAccess() {
+        return sessionStorage.getItem(ACCESS_KEY) === "granted";
+      }
+
+      function showDashboard(isVisible) {
+        loginPanel.classList.toggle("active", !isVisible);
+        dashboardPanel.classList.toggle("active", isVisible);
+      }
+
+      function renderPhotos() {
+        var images = getImages();
+        photoGrid.innerHTML = "";
+
+        if (!images.length) {
+          photoGrid.innerHTML = '<div class="empty-state">No hay imagenes guardadas todavia.</div>';
+          return;
+        }
+
+        images.forEach(function (image) {
+          var card = document.createElement("article");
+          card.className = "photo-card";
+
+          var img = document.createElement("img");
+          img.src = image.src;
+          img.alt = image.title || "Imagen de galeria";
+
+          var copy = document.createElement("div");
+
+          var title = document.createElement("strong");
+          title.textContent = image.title || "Imagen sin titulo";
+
+          var caption = document.createElement("p");
+          caption.className = "muted";
+          caption.style.margin = "6px 0 0";
+          caption.textContent = image.caption || "Sin descripcion.";
+
+          copy.appendChild(title);
+          copy.appendChild(caption);
+
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "button danger-button";
+          btn.textContent = "Eliminar";
+          btn.addEventListener("click", function () {
+            var updated = getImages().filter(function (item) {
+              return item.id !== image.id;
+            });
+            saveImages(updated);
+            renderPhotos();
+            setStatus("Imagen eliminada correctamente.");
+          });
+
+          card.appendChild(img);
+          card.appendChild(copy);
+          card.appendChild(btn);
+          photoGrid.appendChild(card);
+        });
+      }
+
+      function initialize() {
+        if (year) {
+          year.textContent = new Date().getFullYear();
+        }
+
+        if (navToggle && siteNav) {
+          navToggle.addEventListener("click", function () {
+            var isOpen = siteNav.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", String(isOpen));
+          });
+        }
+
+        showDashboard(hasAccess());
+        renderPhotos();
+
+        if (hasAccess()) {
+          setStatus("Modo administrador activo. Ya puedes subir o eliminar fotos.");
+        }
+      }
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (passcodeInput.value.trim() === ADMIN_PASSCODE) {
+          sessionStorage.setItem(ACCESS_KEY, "granted");
+          passcodeInput.value = "";
+          showDashboard(true);
+          renderPhotos();
+          setStatus("Acceso correcto. Ya puedes administrar tus fotos.");
+        } else {
+          setStatus("Codigo incorrecto. Cambia CHANGE-THIS-CODE dentro del archivo.");
+        }
+      });
+
+      uploadForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var file = photoFile.files && photoFile.files[0];
+        if (!file) {
+          setStatus("Selecciona una imagen primero.");
+          return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function (loadEvent) {
+          var images = getImages();
+
+          images.unshift({
+            id: "custom-" + Date.now(),
+            src: loadEvent.target.result,
+            title: photoTitle.value.trim() || "Nuevo momento",
+            caption: photoCaption.value.trim() || "Galeria actualizada desde Admin Media."
+          });
+
+          saveImages(images);
+          uploadForm.reset();
+          renderPhotos();
+          setStatus("Imagen agregada con exito.");
+        };
+
+        reader.readAsDataURL(file);
+      });
+
+      logoutBtn.addEventListener("click", function () {
+        sessionStorage.removeItem(ACCESS_KEY);
+        showDashboard(false);
+        setStatus("Sesion cerrada.");
+      });
+
+      resetBtn.addEventListener("click", function () {
+        resetImages();
+        renderPhotos();
+        setStatus("La galeria volvio a sus imagenes base.");
+      });
+
+      initialize();
+    })();
+  </script>
 </body>
 </html>
